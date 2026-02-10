@@ -1,0 +1,4175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great Harvest Bread Co. - Anchorage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Bodoni+Moda:wght@400;600;700;900&family=Tangerine:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-red: #8B1A1A;
+            --burgundy: #5C1919;
+            --purple-blue: #4A4E8E;
+            --deep-purple: #2D2E5F;
+            --wheat-gold: #D4A574;
+            --light-wheat: #E8C9A0;
+            --cream: #F5F1E8;
+            --dark-bg: #1A1614;
+            --soft-black: #2B2724;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background-color: var(--cream);
+            color: var(--soft-black);
+            overflow-x: hidden;
+            font-size: 18px;
+            font-weight: 400;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(139, 26, 26, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            color: var(--dark-red);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: '';
+            font-size: 1.8rem;
+            animation: sway 3s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--dark-red);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover {
+            color: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--dark-red), var(--burgundy));
+            color: white;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 26, 26, 0.3);
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .order-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(139, 26, 26, 0.4);
+        }
+
+        .order-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section - Bakery Kitchen Photo */
+        .hero {
+            margin-top: 80px;
+            height: 90vh;
+            background-image: 
+                linear-gradient(135deg, rgba(58, 38, 24, 0.55), rgba(92, 25, 25, 0.45)),
+                url('/nodebox/bakery-background.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Flour piles and scattered flour */
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0, 0, 0, 0.1), transparent);
+            mix-blend-mode: multiply;
+        }
+
+        /* Dough ball with realistic shading */
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(245, 241, 232, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            color: var(--dark-bg);
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .hero-content::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 4rem;
+            opacity: 0.4;
+            animation: fadeInUp 1s ease-out 0.1s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        .hero h1 .line-one {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFFFFF, #D4A574);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+        }
+
+        .hero h1 .line-two {
+            display: inline-block;
+            background: linear-gradient(135deg, #D4A574, #FFFFFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-tagline {
+            font-family: 'Cinzel', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: var(--burgundy);
+            font-style: italic;
+            letter-spacing: 2px;
+            animation: fadeInUp 1s ease-out 0.3s both;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-divider {
+            width: 150px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FFFFFF, transparent);
+            margin: 1.5rem auto;
+            animation: fadeInUp 1s ease-out 0.35s both;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: #FFFFFF;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            animation: fadeInUp 1s ease-out 0.4s both;
+            opacity: 0.95;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-primary {
+            background: linear-gradient(135deg, var(--dark-red), var(--burgundy));
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 25px rgba(139, 26, 26, 0.4);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(139, 26, 26, 0.5);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--dark-bg);
+            padding: 1.2rem 3rem;
+            border: 2px solid var(--dark-red);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: var(--dark-red);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Features Section - Flowing Wave Transition */
+        .features {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #F5F1E8 0%, #E8DFD0 100%);
+            position: relative;
+            margin-top: -2px;
+            margin-bottom: 0;
+        }
+
+        .features::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: 
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 100' preserveAspectRatio='none'%3E%3Cpath d='M0,50 Q300,0 600,50 T1200,50 L1200,100 L0,100 Z' fill='%23F5F1E8'/%3E%3C/svg%3E");
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        /* Removed features::after so it doesn't cover the breads-section diagonal transitions */
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(74, 78, 142, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(74, 78, 142, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--dark-red), var(--purple-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(74, 78, 142, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--purple-blue);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--soft-black);
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Menu Section - Dark with Gradient & Diagonal Transition */
+        .menu-section {
+            padding: 8rem 5% 6rem;
+            background: 
+                linear-gradient(180deg, rgba(45, 46, 95, 0.95) 0%, rgba(92, 25, 25, 0.9) 100%),
+                url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='2' /%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise2)' opacity='0.08'/%3E%3C/svg%3E"),
+                linear-gradient(to bottom, var(--deep-purple), var(--burgundy));
+            color: white;
+            position: relative;
+            margin-top: 100px;
+            clip-path: polygon(0 120px, 100% 0, 100% 100%, 0 100%);
+            padding-top: 10rem;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 20%, rgba(212, 165, 116, 0.1), transparent 50%),
+                radial-gradient(circle at 70% 80%, rgba(139, 26, 26, 0.15), transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Breads & Sweets Section - Zigzag Transition */
+        .breads-section {
+            padding: 6rem 5%;
+            background: linear-gradient(180deg, #FFF8E7 0%, #F5E6D3 100%);
+            position: relative;
+            margin-top: 0;
+            padding-top: 8rem;
+            transition: clip-path 0.5s ease, background 0.5s ease, color 0.3s ease;
+        }
+
+        /* Daily Favorites - Downward angle (left high, right low) */
+        .breads-section.daily-active {
+            clip-path: polygon(0 0, 100% 120px, 100% 100%, 0 100%);
+            background: linear-gradient(180deg, #FFF8E7 0%, #FFE8E8 100%); /* Beige to very light red hint */
+        }
+
+        /* Today's Specialty - Peaked in middle (mountain shape) with light red to light reddish-beige gradient */
+        .breads-section.specialty-active {
+            clip-path: polygon(0 120px, 50% 0, 100% 120px, 100% 100%, 0 100%);
+            background: linear-gradient(180deg, #FFE8E8 0%, #FFF5F0 100%); /* Very light red to cream */
+            color: inherit;
+        }
+
+        /* Our Sandwiches - Upward angle with lighter, more visible purple gradient */
+        .breads-section.sandwiches-active {
+            clip-path: polygon(0 120px, 100% 0, 100% 100%, 0 100%);
+            background: linear-gradient(180deg, #F0F0FF 0%, #FFF5F5 100%); /* Very light purple to very light pink */
+            color: inherit;
+        }
+
+        .breads-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, var(--dark-red), var(--burgundy));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .breads-subtitle {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--soft-black);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        /* Tab Navigation */
+        .tab-navigation {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tab-btn {
+            background: white;
+            border: 3px solid transparent;
+            color: var(--soft-black);
+            padding: 1.5rem 3.5rem;
+            border-radius: 15px;
+            font-family: 'Cormorant Garamond', serif !important;
+            font-weight: 400;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        /* Daily Favorites - Tan/Beige */
+        .tab-btn:nth-child(1) {
+            border-color: var(--wheat-gold);
+        }
+
+        .tab-btn:nth-child(1).active {
+            background: linear-gradient(135deg, #E8C9A0, #D4A574);
+            color: white;
+            border-color: var(--dark-red);
+            transform: scale(1.05);
+        }
+
+        /* Today's Specialty - Gold/Red */
+        .tab-btn:nth-child(2) {
+            border-color: var(--dark-red);
+        }
+
+        .tab-btn:nth-child(2).active {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--dark-red));
+            color: white;
+            border-color: var(--burgundy);
+            transform: scale(1.05);
+        }
+
+        /* Our Sandwiches - Purple/Burgundy */
+        .tab-btn:nth-child(3) {
+            border-color: var(--purple-blue);
+        }
+
+        .tab-btn:nth-child(3).active {
+            background: linear-gradient(135deg, var(--purple-blue), var(--burgundy));
+            color: white;
+            border-color: var(--deep-purple);
+            transform: scale(1.05);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .tab-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.5s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Daily Items Grid */
+        .daily-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto 3rem;
+        }
+
+        .bread-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid rgba(201, 122, 122, 0.3); /* Light red border for daily */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .bread-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--wheat-gold), #C97A7A); /* Gold to light red */
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .bread-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(201, 122, 122, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            transition: transform 0.3s ease;
+        }
+
+        .bread-card:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(201, 122, 122, 0.2);
+        }
+
+        .bread-card:hover::before {
+            opacity: 1;
+        }
+
+        .bread-card:hover::after {
+            transform: translate(30%, -30%) scale(1.2);
+        }
+
+        .bread-card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .bread-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--dark-red);
+            margin-bottom: 0.3rem;
+        }
+
+        .bread-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            color: white;
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-top: 0.3rem;
+        }
+
+        /* Hide price in bread-card */
+        .bread-card .price {
+            display: none;
+        }
+
+        /* Specialty Days */
+        .specialty-days {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .day-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(74, 78, 142, 0.15);
+            border-left: 5px solid var(--purple-blue);
+            transition: all 0.3s ease;
+        }
+
+        .day-card:hover {
+            transform: translateX(10px);
+            border-left-color: var(--dark-red);
+            box-shadow: 0 15px 50px rgba(139, 26, 26, 0.2);
+        }
+
+        .day-card h3 {
+            font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 3px;
+            font-size: 1.4rem;
+            color: var(--purple-blue);
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .day-items {
+            list-style: none;
+            padding: 0;
+        }
+
+        .day-items li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(212, 165, 116, 0.2);
+            color: var(--soft-black);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .day-items li:last-child {
+            border-bottom: none;
+        }
+
+        .day-items li::before {
+            content: '';
+            font-size: 1.2rem;
+        }
+
+        .item-category {
+            font-weight: 700;
+            color: var(--dark-red);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .add-order-btn {
+            background: linear-gradient(135deg, var(--purple-blue), var(--deep-purple));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(74, 78, 142, 0.2);
+        }
+
+        .add-order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 78, 142, 0.3);
+        }
+
+        /* Butter Selection Modal */
+        .butter-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 3000;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .butter-modal.active {
+            display: flex;
+        }
+
+        .butter-modal-content {
+            background: white;
+            border-radius: 25px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            animation: slideUp 0.4s ease;
+        }
+
+        .butter-modal h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--dark-red);
+            margin-bottom: 1rem;
+        }
+
+        .butter-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .butter-option {
+            background: var(--cream);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .butter-option:hover {
+            border-color: var(--wheat-gold);
+            transform: scale(1.05);
+        }
+
+        .butter-option.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+
+        .butter-modal-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .butter-modal-buttons button {
+            flex: 1;
+            padding: 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .skip-butter-btn {
+            background: transparent;
+            border: 2px solid var(--soft-black);
+            color: var(--soft-black);
+        }
+
+        .skip-butter-btn:hover {
+            background: var(--soft-black);
+            color: white;
+        }
+
+        .confirm-butter-btn {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border: none;
+            color: white;
+        }
+
+        .confirm-butter-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 6px;
+            font-size: 3.5rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+            letter-spacing: 8px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .section-title-wrapper::before,
+        .section-title-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--wheat-gold));
+        }
+
+        .section-title-wrapper::before {
+            right: 55%;
+            margin-right: 2rem;
+        }
+
+        .section-title-wrapper::after {
+            left: 55%;
+            margin-left: 2rem;
+            background: linear-gradient(90deg, var(--wheat-gold), transparent);
+        }
+
+        .section-title .word-our {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .section-title .word-sandwiches {
+            background: linear-gradient(135deg, #FF6B6B, var(--dark-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 4rem;
+            font-weight: 300;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, var(--wheat-gold), var(--dark-red));
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .menu-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-5px) rotate(1deg);
+            box-shadow: 0 10px 30px rgba(139, 26, 26, 0.2);
+        }
+
+        .menu-item:hover::before {
+            opacity: 1;
+        }
+
+        .menu-item:hover::after {
+            transform: translate(30%, -30%) scale(1.2);
+        }
+
+        .menu-item h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--dark-red);
+            margin-bottom: 0.3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu-item .price {
+            display: none;
+        }
+
+        .menu-item p {
+            color: var(--soft-black);
+            line-height: 1.4;
+            font-size: 0.9rem;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Sandwich Builder Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 30px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.4s ease;
+            
+            /* Hide scrollbar but keep functionality */
+            scrollbar-width: none; /* Firefox */
+            -ms-overflow-style: none; /* IE/Edge */
+        }
+
+        .modal-content::-webkit-scrollbar {
+            display: none; /* Chrome/Safari/Opera */
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, var(--dark-red), var(--burgundy));
+            color: white;
+            padding: 2rem;
+            border-radius: 30px 30px 0 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-family: 'Cormorant Garamond', serif !important;
+            font-weight: 300 !important;
+            font-size: 2.5rem !important;
+            margin-bottom: 0.5rem;
+            letter-spacing: 4px !important;
+        }
+
+        .modal-header .price {
+            font-size: 1.5rem;
+            color: var(--wheat-gold);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .customization-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .customization-section h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.8rem;
+            color: var(--dark-red);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .customization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .custom-option {
+            background: var(--cream);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            border-radius: 15px;
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .custom-option:hover {
+            border-color: var(--wheat-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .custom-option.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+
+        .custom-option.selected .option-icon {
+            transform: scale(1.2);
+        }
+
+        .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .option-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .option-price {
+            font-size: 0.85rem;
+            color: var(--purple-blue);
+            margin-top: 0.3rem;
+        }
+
+        .custom-option.selected .option-price {
+            color: white;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .radio-option {
+            background: var(--cream);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            border-radius: 15px;
+            padding: 1.2rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .radio-option:hover {
+            border-color: var(--wheat-gold);
+            transform: translateX(5px);
+        }
+
+        .radio-option.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+
+        .radio-option .option-icon {
+            font-size: 2rem;
+            margin-bottom: 0;
+        }
+
+        .radio-option-content {
+            flex: 1;
+        }
+
+        .modal-footer {
+            padding: 2rem;
+            background: var(--cream);
+            border-radius: 0 0 30px 30px;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .add-to-cart-btn {
+            background: linear-gradient(135deg, var(--purple-blue), var(--deep-purple));
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(74, 78, 142, 0.3);
+        }
+
+        .add-to-cart-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 30px rgba(74, 78, 142, 0.4);
+        }
+
+        .total-price {
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-red);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: var(--cream);
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            color: var(--wheat-gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            line-height: 2;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--wheat-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 165, 116, 0.2);
+            color: rgba(245, 241, 232, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .section-title {
+                font-size: 3.5rem;
+                letter-spacing: 4px;
+            }
+
+            .section-title-wrapper::before,
+            .section-title-wrapper::after {
+                width: 50px;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .customization-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .modal-content {
+                margin: 1rem;
+            }
+        }
+    
+        /* Checkbox Group for Build-Your-Own */
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(212, 165, 116, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-option:hover {
+            background: rgba(212, 165, 116, 0.1);
+            border-color: var(--wheat-gold);
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .checkbox-option span {
+            font-size: 0.95rem;
+        }
+
+    
+        .cancel-btn {
+            background: white;
+            border: 2px solid var(--wheat-gold);
+            color: var(--dark-red);
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex: 1;
+        }
+
+        .cancel-btn:hover {
+            background: var(--cream);
+            border-color: var(--dark-red);
+            transform: scale(1.02);
+        }
+
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            padding: 2rem;
+        }
+
+        .modal-footer .add-to-cart-btn {
+            flex: 2;
+        }
+
+    
+        /* Grid layout for small square options */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Make checkbox options into clickable squares */
+        .checkbox-option {
+            background: var(--cream);
+            border: 2px solid rgba(212, 165, 116, 0.3);
+            border-radius: 15px;
+            padding: 1.2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .checkbox-option:hover {
+            border-color: var(--wheat-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkbox-option.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+
+        .checkbox-option input[type="checkbox"] {
+            display: none;
+        }
+
+        .checkbox-option .option-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .checkbox-option.selected .option-icon {
+            transform: scale(1.2);
+        }
+
+        .checkbox-option span:not(.option-icon) {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: block;
+        }
+
+    
+        /* Ensure header and titles are above transition shapes */
+        #breadsSectionHeader {
+            position: relative;
+            z-index: 10;
+        }
+
+        .breads-title, .breads-subtitle {
+            position: relative;
+            z-index: 10;
+        }
+
+    
+        /* Luxury Typography Refinements */
+        h4, h5, h6 {
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-weight: 400;
+        }
+
+        button, .btn {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+
+
+        .breads-title, .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+    
+        /* Hide Add to Order buttons in Daily Favorites and Today's Specialty tabs */
+        #daily-tab .add-order-btn,
+        #specialty-tab .add-order-btn {
+            display: none;
+        }
+
+        /* Update bread-card text colors for better contrast on gradient backgrounds */
+        .bread-card h3 {
+            color: var(--dark-red);
+            position: relative;
+            z-index: 2;
+        }
+
+        .bread-card .price {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bread-card-icon {
+            position: relative;
+            z-index: 2;
+        }
+
+        .bread-badge {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Specialty items styling to match */
+        .specialty-item {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid rgba(232, 196, 184, 0.3); /* Light reddish-beige border */
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .specialty-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #C97A7A, #E8C4B8);
+            border-radius: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .specialty-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(232, 196, 184, 0.1), transparent);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            transition: transform 0.3s ease;
+        }
+
+        .specialty-item:hover {
+            transform: translateY(-8px) rotate(1deg);
+            box-shadow: 0 15px 40px rgba(232, 196, 184, 0.2);
+        }
+
+        .specialty-item:hover::before {
+            opacity: 1;
+        }
+
+        .specialty-item:hover::after {
+            transform: translate(30%, -30%) scale(1.2);
+        }
+
+        .specialty-item h3,
+        .specialty-item .price {
+            position: relative;
+            z-index: 2;
+            color: var(--dark-red);
+        }
+
+        .specialty-icon {
+            position: relative;
+            z-index: 2;
+        }
+
+    
+        /* Make supporting text in modal headers smaller */
+        .customization-section h3 {
+            font-size: 1.3rem;
+        }
+
+    
+        /* Make modal section titles larger and supporting text smaller */
+        .customization-section h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        /* Style for the supporting text in parentheses */
+        .customization-section h3 {
+            display: flex;
+            align-items: baseline;
+            gap: 0.5rem;
+        }
+
+        /* Add small class for parenthetical text */
+        .supporting-text {
+            font-size: 0.75rem;
+            font-weight: 400;
+            color: rgba(0, 0, 0, 0.6);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Cheese slice counter */
+        .cheese-counter, .protein-counter {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+            color: var(--dark-red);
+            font-weight: 700;
+        }
+
+        .custom-option.selected .cheese-counter,
+        .custom-option.selected .protein-counter {
+            display: flex;
+        }
+
+        .cheese-btn, .protein-btn {
+            background: var(--wheat-gold);
+            color: white;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .cheese-btn:hover, .protein-btn:hover {
+            background: var(--dark-red);
+            transform: scale(1.15);
+        }
+
+        .cheese-btn:disabled, .protein-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .cheese-count, .protein-count {
+            min-width: 35px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+
+    
+        /* Fix close button for Build-Your-Own modal with white header */
+        #buildYourOwnModal .close-modal {
+            background: var(--dark-red);
+            color: white;
+            z-index: 101;
+        }
+
+        #buildYourOwnModal .close-modal:hover {
+            background: var(--burgundy);
+            transform: scale(1.1);
+        }
+
+        /* Pre-made sandwiches divider */
+        .premade-divider {
+            max-width: 1000px;
+            margin: 4rem auto 2.5rem;
+            text-align: center;
+        }
+        .premade-divider-rule {
+            width: 60%;
+            max-width: 400px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(74,78,142,0.3), rgba(139,26,26,0.3), transparent);
+            margin: 0 auto 1.5rem;
+            display: block;
+        }
+        .premade-divider-rule-bottom {
+            width: 60%;
+            max-width: 400px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(74,78,142,0.3), rgba(139,26,26,0.3), transparent);
+            margin: 1.5rem auto 0;
+            display: block;
+        }
+        .premade-divider-inner {
+            display: inline-block;
+            padding: 0 2rem;
+        }
+        .premade-divider-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(135deg, var(--purple-blue), var(--dark-red));
+            padding: 0.4rem 1.4rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+        .premade-divider-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.9rem;
+            font-weight: 300;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--purple-blue), var(--dark-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        .premade-divider-sub {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--soft-black);
+            opacity: 0.6;
+            letter-spacing: 1px;
+            display: block;
+        }
+
+        /* ── Specialty Sandwich Modal ── */
+        .sm-size-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .sm-size-btn {
+            flex: 1;
+            min-width: 140px;
+            background: var(--cream);
+            border: 2px solid rgba(212,165,116,0.35);
+            border-radius: 15px;
+            padding: 1.2rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .sm-size-btn:hover { border-color: var(--wheat-gold); transform: translateY(-2px); }
+        .sm-size-btn.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+        .sm-size-name {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            display: block;
+        }
+        .sm-size-price {
+            font-size: 1.4rem;
+            font-weight: 300;
+            display: block;
+            margin-top: 0.3rem;
+        }
+        .sm-bread-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(130px,1fr));
+            gap: 0.75rem;
+        }
+        .sm-bread-btn {
+            background: var(--cream);
+            border: 2px solid rgba(212,165,116,0.35);
+            border-radius: 12px;
+            padding: 0.9rem 0.6rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+        .sm-bread-btn:hover { border-color: var(--wheat-gold); transform: translateY(-2px); }
+        .sm-bread-btn.selected {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+        .sm-bread-badge {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 0.3rem;
+            opacity: 0.85;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .sm-holds-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+        }
+        .sm-hold-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: rgba(74,78,142,0.07);
+            border: 1.5px solid rgba(74,78,142,0.2);
+            border-radius: 30px;
+            padding: 0.45rem 1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            color: var(--soft-black);
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .sm-hold-chip:hover {
+            border-color: var(--dark-red);
+            background: rgba(139,26,26,0.05);
+        }
+        .sm-hold-chip.held {
+            background: linear-gradient(135deg, rgba(139,26,26,0.1), rgba(92,25,25,0.08));
+            border-color: var(--dark-red);
+            color: var(--dark-red);
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        .sm-hold-chip .chip-x {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--dark-red);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .sm-hold-chip.held .chip-x { opacity: 1; }
+
+        .sm-section-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            color: var(--dark-red);
+            text-transform: uppercase;
+            margin-bottom: 0.9rem;
+        }
+        /* Stepper cards (protein, cheese, veggie) */
+        .sm-stepper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 0.6rem;
+        }
+        .sm-stepper-card {
+            background: var(--cream);
+            border: 1.5px solid rgba(212,165,116,0.35);
+            border-radius: 12px;
+            padding: 0.7rem 0.8rem;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .sm-stepper-card.sm-stepper-active {
+            background: linear-gradient(135deg, rgba(212,165,116,0.2), rgba(139,26,26,0.07));
+            border-color: var(--dark-red);
+        }
+        .sm-stepper-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            line-height: 1.3;
+            color: var(--soft-black);
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+        .sm-stepper-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            color: var(--purple-blue);
+            display: block;
+        }
+        .sm-stepper-active .sm-stepper-name { color: var(--dark-red); font-weight: 600; }
+        .sm-stepper-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .sm-step-btn {
+            background: rgba(212,165,116,0.25);
+            border: 1px solid rgba(212,165,116,0.4);
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            flex-shrink: 0;
+            color: var(--soft-black);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1;
+        }
+        .sm-step-btn:hover {
+            background: var(--wheat-gold);
+            border-color: var(--dark-red);
+            color: white;
+        }
+        .sm-stepper-active .sm-step-btn {
+            background: rgba(139,26,26,0.1);
+            border-color: rgba(139,26,26,0.3);
+        }
+        .sm-stepper-active .sm-step-btn:hover { background: var(--dark-red); color: white; }
+        .sm-step-label {
+            flex: 1;
+            text-align: center;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: #999;
+            letter-spacing: 0.3px;
+        }
+        .sm-stepper-active .sm-step-label { color: var(--dark-red); }
+
+        /* Protein / Cheese / Veggie add-on grid */
+        .sm-addon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 0.6rem;
+        }
+        .sm-addon-chip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--cream);
+            border: 1.5px solid rgba(212,165,116,0.35);
+            border-radius: 10px;
+            padding: 0.65rem 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.95rem;
+            gap: 0.4rem;
+            user-select: none;
+        }
+        .sm-addon-chip:hover { border-color: var(--wheat-gold); transform: translateY(-1px); }
+        .sm-addon-chip.selected {
+            background: linear-gradient(135deg, rgba(212,165,116,0.25), rgba(139,26,26,0.08));
+            border-color: var(--dark-red);
+            color: var(--dark-red);
+            font-weight: 600;
+        }
+        .sm-addon-name { flex: 1; line-height: 1.3; }
+        .sm-addon-price {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--purple-blue);
+            white-space: nowrap;
+        }
+        .sm-addon-chip.selected .sm-addon-price { color: var(--dark-red); }
+        /* Spread buttons — 3-state: none / light / heavy */
+        .sm-spread-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+        }
+        .sm-spread-btn {
+            background: var(--cream);
+            border: 1.5px solid rgba(212,165,116,0.35);
+            border-radius: 25px;
+            padding: 0.45rem 1.1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+            user-select: none;
+            position: relative;
+        }
+        .sm-spread-btn:hover { border-color: var(--wheat-gold); }
+        .sm-spread-btn.light {
+            background: rgba(212,165,116,0.2);
+            border-color: var(--wheat-gold);
+            color: #7a5c2e;
+        }
+        .sm-spread-btn.heavy {
+            background: linear-gradient(135deg, var(--wheat-gold), var(--light-wheat));
+            border-color: var(--dark-red);
+            color: white;
+        }
+        .spread-state-label {
+            display: block;
+            font-size: 0.6rem;
+            margin-top: 0.15rem;
+            opacity: 0.85;
+            text-align: center;
+        }
+        /* Seasoning / wrapping simple toggle tags */
+        .sm-tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .sm-tag {
+            background: var(--cream);
+            border: 1.5px solid rgba(74,78,142,0.2);
+            border-radius: 25px;
+            padding: 0.4rem 1rem;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
+            user-select: none;
+        }
+        .sm-tag:hover { border-color: var(--purple-blue); }
+        .sm-tag.selected {
+            background: linear-gradient(135deg, var(--purple-blue), var(--deep-purple));
+            border-color: var(--deep-purple);
+            color: white;
+        }
+        .sm-tag.selected.paid { background: linear-gradient(135deg, var(--dark-red), var(--burgundy)); border-color: var(--burgundy); }
+
+        /* Accordion Drawers */
+        .accordion-section { margin: 2rem auto; max-width: 1000px; }
+        .accordion-header {
+            background: linear-gradient(135deg, rgba(74,78,142,0.1), rgba(139,26,26,0.08));
+            border: 2px solid rgba(74,78,142,0.2);
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+        .accordion-header:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(74,78,142,0.2);
+            border-color: var(--purple-blue);
+        }
+        .accordion-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--purple-blue), var(--dark-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .accordion-icon {
+            font-size: 2rem;
+            transition: transform 0.3s ease;
+            color: var(--purple-blue);
+        }
+        .accordion-header.active .accordion-icon { transform: rotate(180deg); }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+        .accordion-content.active { max-height: 5000px; }
+        .accordion-count {
+            font-size: 0.9rem;
+            color: var(--purple-blue);
+            font-weight: 600;
+            background: rgba(74,78,142,0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Great Harvest Bread Co.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#menu" class="order-btn"><span>Order Now</span></a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>
+                <span class="line-one">Artisan Bread</span>
+                <span class="line-two">& Baked Fresh</span>
+            </h1>
+            <div class="hero-divider"></div>
+            <p>Handcrafted daily in Anchorage, Alaska</p>
+            <div class="cta-buttons">
+                <a href="#menu" class="cta-primary">Order Online</a>
+                <a href="#menu" class="cta-secondary">View Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breads & Sweets Section -->
+    <section class="breads-section" id="breads">
+
+        <!-- Tab Navigation -->
+        <div class="tab-navigation">
+            <button class="tab-btn active" onclick="switchTab('daily')"><span>🍞 Daily Favorites</span></button>
+            <button class="tab-btn" onclick="switchTab('specialty')"><span>⭐ Today's Specialty</span></button>
+            <button class="tab-btn" onclick="switchTab('sandwiches')"><span>🥪 Our Sandwiches</span></button>
+        </div>
+
+        <!-- Title for Breads/Specialty ONLY -->
+        <div id="breadsSectionHeader">
+            <h2 class="breads-title">FRESH BAKED DAILY</h2>
+            <p class="breads-subtitle">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
+        </div>
+
+        <!-- Daily Tab -->
+        <div class="tab-content active" id="daily-tab">
+            <div class="daily-grid">
+                <!-- Daily Breads -->
+                <div class="bread-card" onclick="addBreadToOrder('Honey Whole Wheat', 6.50, true)">
+                    <span class="bread-card-icon">🌾</span>
+                    <h3>Honey Whole Wheat</h3>
+                    <span class="bread-badge">100% Whole Grain</span>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Honey White', 6.50, false)">
+                    <span class="bread-card-icon">🥖</span>
+                    <h3>Honey White</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Cinnamon Chip', 7.50, false)">
+                    <span class="bread-card-icon">🍫</span>
+                    <h3>Cinnamon Chip</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Cinnamon Swirl', 7.50, false)">
+                    <span class="bread-card-icon">🌀</span>
+                    <h3>Cinnamon Swirl</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Chugach Rustic', 7.00, false)">
+                    <span class="bread-card-icon">🏔️</span>
+                    <h3>Chugach Rustic</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Multigrain Rustic', 7.00, false)">
+                    <span class="bread-card-icon">🌰</span>
+                    <h3>Multigrain Rustic</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Cranberry Walnut Rustic', 8.00, false)">
+                    <span class="bread-card-icon">🍒</span>
+                    <h3>Cranberry Walnut Rustic</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.00</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addBreadToOrder('Fresh Rolls (6-pack)', 5.50, false)">
+                    <span class="bread-card-icon">🧺</span>
+                    <h3>Fresh Rolls</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Honey Whole Wheat & Honey White (6-pack)</p>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$5.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--dark-red); margin: 3rem 0 2rem; letter-spacing: 5px; text-transform: uppercase;">Daily Sweet Treats</h3>
+            
+            <div class="daily-grid">
+                <div class="bread-card" onclick="addItemToOrder('Chocolate Chip Oatmeal Cookies', 8.50)">
+                    <span class="bread-card-icon">🍪</span>
+                    <h3>Chocolate Chip Oatmeal Cookies</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addItemToOrder('Baker\'s Choice Scones', 3.50)">
+                    <span class="bread-card-icon">🥐</span>
+                    <h3>Baker's Choice Scones</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$3.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addItemToOrder('Ham and Cheese Rolls', 4.50)">
+                    <span class="bread-card-icon">🥪</span>
+                    <h3>Ham and Cheese Rolls</h3>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.50</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+                <div class="bread-card" onclick="addItemToOrder('Cinnamon Rolls', 4.00)">
+                    <span class="bread-card-icon">🌀</span>
+                    <h3>Cinnamon Rolls</h3>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Plain & Walnut-Raisin</p>
+                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.00</div>
+                    <button class="add-order-btn">Add to Order</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Specialty Tab - Today's Items Only -->
+        <div class="tab-content" id="specialty-tab">
+            <h3 id="todayTitle" style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.8rem; color: var(--dark-red); margin-bottom: 3rem; letter-spacing: 5px; text-transform: uppercase;"></h3>
+            
+            <!-- Specialty Breads for Today -->
+            <h4 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--purple-blue); margin-bottom: 2rem; letter-spacing: 5px; text-transform: uppercase;">Specialty Breads</h4>
+            <div class="daily-grid" id="specialtyBreadsGrid"></div>
+
+            <!-- Specialty Sweets for Today -->
+            <h4 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--purple-blue); margin: 4rem 0 2rem; letter-spacing: 5px; text-transform: uppercase;">Specialty Sweets</h4>
+            <div class="daily-grid" id="specialtySweetsGrid"></div>
+        </div>
+
+        <!-- Our Sandwiches Tab -->
+        <div class="tab-content" id="sandwiches-tab">
+            <!-- Build Your Own Section -->
+            <h3 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 4px; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #FF6B35, #F7931E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; width: 100%;">BUILD-YOUR-OWN SANDWICH</h3>
+            <p style="text-align: center; font-size: 1.1rem; color: var(--soft-black); margin-bottom: 3rem;">Half $10.25 | Whole $14.25</p>
+            
+            <div class="menu-item" onclick="openBuildYourOwn(event)" style="max-width: 800px; margin: 0 auto 4rem; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(139, 26, 26, 0.1)); cursor: pointer;">
+                <h3 style="text-align: center; font-size: 2rem;">🥪 Start Building Your Sandwich</h3>
+                <p style="text-align: center; margin-top: 1rem; font-size: 1.1rem;">Choose your bread, meat, cheese, veggies, and more!</p>
+            </div>
+
+            <!-- Pre-made Sandwiches Divider -->
+            <div class="premade-divider">
+                <span class="premade-divider-rule"></span>
+                <div class="premade-divider-inner">
+                    <span class="premade-divider-label">— or choose one of ours —</span>
+                    <span class="premade-divider-title">Pre-Made Sandwiches</span>
+                    <span class="premade-divider-sub">Chef-crafted combinations, ready to order</span>
+                </div>
+                <span class="premade-divider-rule-bottom"></span>
+            </div>
+
+            <!-- Specialty Sandwiches -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title"><span>🌟</span><span>Specialty Sandwiches</span></div>
+                    <div style="display:flex;align-items:center;gap:1rem;">
+                        <span class="accordion-count">7 options</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                </div>
+                <div class="accordion-content">
+            <div class="menu-grid">
+                <div class="menu-item" onclick="openSpecialtySandwich('turkeyBaconRanch')"><h3>Turkey Bacon Ranch</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Turkey, bacon strips, savory ranch spread, Swiss cheese, romaine lettuce, tomatoes & red onions.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('spicyItalian')"><h3>Spicy Italian</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Salami, pepperoni, ham, Provolone cheese, pepperoncini, red onion, romaine lettuce, tomatoes, mayonnaise, oil & vinegar.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('chickenAlaska')"><h3>Chicken, Alaska</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Chunks of tender chicken in a seasoned mayonnaise dressing with spicy pecans, red onions, romaine lettuce, tomatoes, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('chipotleTurkey')"><h3>Chipotle Turkey</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Turkey, red onions, romaine lettuce, tomato, pepper jack cheese, spicy chipotle spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('turkeySwiss')"><h3>Turkey & Swiss</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Turkey, Swiss cheese, mayonnaise, Dijon mustard, red onions, romaine lettuce, tomatoes, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hamCheddar')"><h3>Ham & Cheddar</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Tender slices of ham, red onions, romaine lettuce, tomatoes, cheddar cheese, mayonnaise, Dijon mustard, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('roastBeefProvolone')"><h3>Roast Beef & Provolone</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Sliced roast beef, red onions, romaine lettuce, tomatoes, Provolone cheese, Dijon mustard, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('smokedSalmon')"><h3>Smoked Salmon</h3><div class="price">Half $10.25 | Whole $14.25</div>
+                    <p>Smoked salmon mixed with cream cheese & herbs, red onions, romaine lettuce, tomatoes, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="addSandwichToOrder('Dirk's Spicy Veggie', 10.00, 14.00)"><h3>Dirk's Spicy Veggie</h3><div class="price">Half $10.00 | Whole $14.00</div>
+                    <p>Homemade hummus, Swiss & cheddar cheese, jalapeños, red onions, romaine lettuce, sprouts, tomatoes, topped with our chipotle spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('harvestVeggie')"><h3>Harvest Veggie</h3><div class="price">Half $10.00 | Whole $14.00</div>
+                    <p>Provolone & cheddar cheese, red onions, romaine lettuce, sprouts, tomatoes, cucumbers, bell pepper rings, our roasted red pepper spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('pbj')"><h3>Peanut Butter & Jam</h3><div class="price">Half $5.75 | Whole $7.75</div>
+                    <p>Creamy peanut butter and strawberry jam.</p>
+                    
+                </div>
+            </div>
+                </div>
+            </div>
+
+            <!-- Hot Panini Sandwiches -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title"><span>🔥</span><span>Hot Panini Sandwiches</span></div>
+                    <div style="display:flex;align-items:center;gap:1rem;">
+                        <span class="accordion-count">6 options</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                </div>
+                <div class="accordion-content">
+            <div class="menu-grid">
+                <div class="menu-item" onclick="openSpecialtySandwich('hotRoastBeef')"><h3>Hot Roast Beef & Provolone Panini</h3><div class="price">Whole $14.75</div>
+                    <p>Roast beef, Provolone cheese, red onions, tomatoes, bell pepper rings, mayonnaise, Dijon mustard, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hotTurkeyPepperJack')"><h3>Hot Turkey & Pepper Jack Panini</h3><div class="price">Whole $14.75</div>
+                    <p>Turkey, pepper jack cheese, red onions, tomatoes, bell pepper rings, chipotle spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hotTurkeySwiss')"><h3>Hot Turkey & Swiss Panini</h3><div class="price">Whole $14.75</div>
+                    <p>Turkey, Swiss cheese, tomatoes, red onions, bell pepper rings, Dijon mustard, mayonnaise, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hotHamCheddar')"><h3>Hot Ham & Cheddar Panini</h3><div class="price">Whole $14.75</div>
+                    <p>Ham, cheddar cheese, tomatoes, red onions, bell pepper rings, Dijon mustard, mayonnaise, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('blt')"><h3>Hot Bacon Lettuce Tomato Panini</h3><div class="price">Whole $12.75</div>
+                    <p>Bacon, romaine lettuce, tomatoes, mayonnaise, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('spicyAppleBaconGC')"><h3>Spicy Apple Bacon Grilled Cheese</h3><div class="price">Whole $14.75</div>
+                    <p>Melted cheddar and Provolone cheeses, thick-sliced apples, bacon, pepper jelly.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hotCheddarSwiss')"><h3>Hot Cheddar & Swiss Panini</h3><div class="price">Whole $12.50</div>
+                    <p>Cheddar and Swiss cheeses & our garlic herb spread.</p>
+                    
+                </div>
+            </div>
+                </div>
+            </div>
+
+            <!-- Breakfast Sandwiches -->
+            <div class="accordion-section">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <div class="accordion-title"><span>🍳</span><span>Hot Breakfast Sandwiches</span></div>
+                    <div style="display:flex;align-items:center;gap:1rem;">
+                        <span class="accordion-count">4 options</span>
+                        <span class="accordion-icon">▼</span>
+                    </div>
+                </div>
+                <div class="accordion-content">
+            <div class="menu-grid">
+                <div class="menu-item" onclick="openSpecialtySandwich('cheeseEggs')"><h3>Cheese & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Cheddar cheese, eggs, garlic herb spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('hamEggs')"><h3>Ham & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Ham, cheddar cheese, eggs, garlic herb spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('baconEggs')"><h3>Bacon & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Bacon strips, cheddar cheese, eggs, garlic herb spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('redRooster')"><h3>Red Rooster</h3><div class="price">Whole $11.50</div>
+                    <p>Bacon strips, cheddar cheese, eggs, roasted peppers & onions, garlic herb spread, spicy rooster sauce, andsat & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('sausageEggs')"><h3>Sausage & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Sausage patty, cheddar cheese, eggs, garlic herb spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('veggiesEggs')"><h3>Veggies & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Cheddar cheese, eggs, tomatoes, onions, bell pepper rings, garlic herb spread, salt & pepper.</p>
+                    
+                </div>
+
+                <div class="menu-item" onclick="openSpecialtySandwich('sweetSavoryHamEggs')"><h3>Sweet & Savory Ham & Eggs</h3><div class="price">Whole $11.50</div>
+                    <p>Ham, cheddar cheese, eggs, and maple syrup.</p>
+                    
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🍞</div>
+                <h3>Fresh Daily</h3>
+                <p>Every loaf is made from scratch each morning using premium, locally-sourced ingredients and time-honored baking techniques.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🚚</div>
+                <h3>Delivery Available</h3>
+                <p>Get your favorite breads and pastries delivered right to your door through our seamless DoorDash integration.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Award Winning</h3>
+                <p>Recognized as Anchorage's best bakery, we've been serving the community with quality and passion since day one.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Build-Your-Own Sandwich Modal -->
+    <div class="modal" id="buildYourOwnModal">
+        <div class="modal-content" style="max-width: 900px;">
+            <div class="modal-header" style="position: sticky; top: 0; z-index: 100; background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                <button class="close-modal" onclick="closeBuildYourOwn()">&times;</button>
+                <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                    <div>
+                        <h2 style="margin: 0;">Build-Your-Own Sandwich</h2>
+                        <div class="price" style="margin-top: 0.5rem;">Half $10.25 | Whole $14.25</div>
+                    </div>
+                    <div id="buildYourOwnTotal" style="
+                        background: linear-gradient(135deg, var(--wheat-gold), var(--dark-red));
+                        color: white;
+                        padding: 1.5rem 2.5rem;
+                        border-radius: 20px;
+                        font-size: 2rem;
+                        font-weight: 700;
+                        box-shadow: 0 5px 20px rgba(139, 26, 26, 0.3);
+                        min-width: 180px;
+                        text-align: center;
+                        transition: all 0.3s ease;
+                        font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 3px;
+                    ">$0.00</div>
+                </div>
+            </div>
+            
+            <div class="modal-body">
+                <!-- Size Selection - Keep full width -->
+                <div class="customization-section">
+                    <h3>📏 Size <span class="supporting-text">(Choose 1)</span></h3>
+                    <div class="radio-group">
+                        <div class="radio-option" onclick="selectSize('half', 10.25)">
+                            <span class="option-icon">½</span>
+                            <div class="radio-option-content">
+                                <div class="option-name">Half - $10.25</div>
+                            </div>
+                        </div>
+                        <div class="radio-option" onclick="selectSize('whole', 14.25)">
+                            <span class="option-icon">🥪</span>
+                            <div class="radio-option-content">
+                                <div class="option-name">Whole - $14.25</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bread Selection - Small squares grid -->
+                <div class="customization-section">
+                    <h3>🍞 Bread <span class="supporting-text">(Choose 1)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Honey Whole Wheat')">
+                            <span class="option-icon">🌾</span>
+                            <div class="option-name">Honey Whole Wheat</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Honey White')">
+                            <span class="option-icon">🍞</span>
+                            <div class="option-name">Honey White</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Cinnamon Chip')">
+                            <span class="option-icon">🍪</span>
+                            <div class="option-name">Cinnamon Chip</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Chugach Rustic')">
+                            <span class="option-icon">🥖</span>
+                            <div class="option-name">Chugach Rustic</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Cranberry Walnut')">
+                            <span class="option-icon">🌰</span>
+                            <div class="option-name">Cranberry Walnut</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Multigrain')">
+                            <span class="option-icon">🌾</span>
+                            <div class="option-name">Multigrain</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Daily Whole Grain')">
+                            <span class="option-icon">🌾</span>
+                            <div class="option-name">Daily Whole Grain</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Daily Cheese')">
+                            <span class="option-icon">🧀</span>
+                            <div class="option-name">Daily Cheese</div>
+                        </div>
+                        <div class="custom-option" onclick="selectBreadChoice(this, 'Daily Cheese Rustic', 1.00)">
+                            <span class="option-icon">🧀</span>
+                            <div class="option-name">Daily Cheese Rustic</div>
+                            <div class="option-price">+$1.00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spreads - Small squares, multi-select -->
+                <div class="customization-section">
+                    <h3>🧈 Spreads <span class="supporting-text">(Choose 1, Add'l +$0.50)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Chipotle')">
+                            <span class="option-icon">🌶️</span>
+                            <div class="option-name">Chipotle</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Mayonnaise')">
+                            <span class="option-icon">🥚</span>
+                            <div class="option-name">Mayonnaise</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Dijon Mustard')">
+                            <span class="option-icon">🟡</span>
+                            <div class="option-name">Dijon Mustard</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Yellow Mustard')">
+                            <span class="option-icon">🟨</span>
+                            <div class="option-name">Yellow Mustard</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Red Pepper Spread')">
+                            <span class="option-icon">🫑</span>
+                            <div class="option-name">Red Pepper Spread</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Garlic Herb')">
+                            <span class="option-icon">🧄</span>
+                            <div class="option-name">Garlic Herb</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSpreadSquare(this, 'Spicy Rooster')">
+                            <span class="option-icon">🐓</span>
+                            <div class="option-name">Spicy Rooster</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meat/Hummus - Small squares grid -->
+                <div class="customization-section">
+                    <h3>🥩 Meat/Hummus <span class="supporting-text">(Choose 1, Add'l 1/2 +$1.00, Full +$2.00)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="selectProtein(this, 'Turkey')">
+                            <span class="option-icon">🦃</span>
+                            <div class="option-name">Turkey</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Ham')">
+                            <span class="option-icon">🍖</span>
+                            <div class="option-name">Ham</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Roast Beef')">
+                            <span class="option-icon">🥩</span>
+                            <div class="option-name">Roast Beef</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Bacon')">
+                            <span class="option-icon">🥓</span>
+                            <div class="option-name">Bacon</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Salami & Pepperoni')">
+                            <span class="option-icon">🍕</span>
+                            <div class="option-name">Salami & Pepperoni</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Smoked Salmon & Cream Cheese')">
+                            <span class="option-icon">🐟</span>
+                            <div class="option-name">Smoked Salmon & Cream Cheese</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Chicken Salad')">
+                            <span class="option-icon">🍗</span>
+                            <div class="option-name">Chicken Salad</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectProtein(this, 'Hummus')">
+                            <span class="option-icon">🫘</span>
+                            <div class="option-name">Hummus</div>
+                            <div class="protein-counter">
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, -0.5)">−</button>
+                                <span class="protein-count">1</span>
+                                <button class="protein-btn" onclick="adjustProteinPortions(event, this, 0.5)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cheese - Small squares grid -->
+                <div class="customization-section">
+                    <h3>🧀 Cheese <span class="supporting-text">(Choose 1, Add'l +$1.00)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="selectCheese(this, 'Swiss')">
+                            <span class="option-icon">🧀</span>
+                            <div class="option-name">Swiss</div>
+                            <div class="cheese-counter">
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, -1)">−</button>
+                                <span class="cheese-count">2</span>
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectCheese(this, 'Cheddar')">
+                            <span class="option-icon">🧀</span>
+                            <div class="option-name">Cheddar</div>
+                            <div class="cheese-counter">
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, -1)">−</button>
+                                <span class="cheese-count">2</span>
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectCheese(this, 'Pepper Jack')">
+                            <span class="option-icon">🌶️</span>
+                            <div class="option-name">Pepper Jack</div>
+                            <div class="cheese-counter">
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, -1)">−</button>
+                                <span class="cheese-count">2</span>
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectCheese(this, 'Provolone')">
+                            <span class="option-icon">🧀</span>
+                            <div class="option-name">Provolone</div>
+                            <div class="cheese-counter">
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, -1)">−</button>
+                                <span class="cheese-count">2</span>
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, 1)">+</button>
+                            </div>
+                        </div>
+                        <div class="custom-option" onclick="selectCheese(this, 'Cream Cheese')">
+                            <span class="option-icon">🧈</span>
+                            <div class="option-name">Cream Cheese</div>
+                            <div class="cheese-counter">
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, -1)">−</button>
+                                <span class="cheese-count">2</span>
+                                <button class="cheese-btn" onclick="adjustCheeseSlices(event, this, 1)">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Veggies - Small squares, multi-select with limit -->
+                <div class="customization-section">
+                    <h3>🥬 Veggies <span class="supporting-text">(Choose 4, Add'l +$0.50)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Bell Pepper')">
+                            <span class="option-icon">🫑</span>
+                            <div class="option-name">Bell Pepper</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Cucumber')">
+                            <span class="option-icon">🥒</span>
+                            <div class="option-name">Cucumber</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Dill Pickle')">
+                            <span class="option-icon">🥒</span>
+                            <div class="option-name">Dill Pickle</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Jalapeño')">
+                            <span class="option-icon">🌶️</span>
+                            <div class="option-name">Jalapeño</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Lettuce')">
+                            <span class="option-icon">🥬</span>
+                            <div class="option-name">Lettuce</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Red Onion')">
+                            <span class="option-icon">🧅</span>
+                            <div class="option-name">Red Onion</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Pepperoncini')">
+                            <span class="option-icon">🌶️</span>
+                            <div class="option-name">Pepperoncini</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Sprouts')">
+                            <span class="option-icon">🌱</span>
+                            <div class="option-name">Sprouts</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleVeggieSquare(this, 'Tomato')">
+                            <span class="option-icon">🍅</span>
+                            <div class="option-name">Tomato</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Seasonings - Small squares, multi-select -->
+                <div class="customization-section">
+                    <h3>🧂 Seasonings <span class="supporting-text">(Optional)</span></h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="toggleSeasoningSquare(this, 'Oil')">
+                            <span class="option-icon">🫗</span>
+                            <div class="option-name">Oil</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSeasoningSquare(this, 'Vinegar')">
+                            <span class="option-icon">🧴</span>
+                            <div class="option-name">Vinegar</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSeasoningSquare(this, 'Salt')">
+                            <span class="option-icon">🧂</span>
+                            <div class="option-name">Salt</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleSeasoningSquare(this, 'Black Pepper')">
+                            <span class="option-icon">⚫</span>
+                            <div class="option-name">Black Pepper</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additions - Small squares, multi-select with prices -->
+                <div class="customization-section">
+                    <h3>➕ Additions</h3>
+                    <div class="options-grid">
+                        <div class="custom-option" onclick="toggleAdditionSquare(this, 'Avocado', 1.25)">
+                            <span class="option-icon">🥑</span>
+                            <div class="option-name">Avocado</div>
+                            <div class="option-price">+$1.25</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleAdditionSquare(this, 'Extra Chicken/AK Salmon 1/2', 1.50)">
+                            <span class="option-icon">🍗</span>
+                            <div class="option-name">Extra Chicken/AK Salmon 1/2</div>
+                            <div class="option-price">+$1.50</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleAdditionSquare(this, 'Extra Chicken/AK Salmon Full', 3.00)">
+                            <span class="option-icon">🍗</span>
+                            <div class="option-name">Extra Chicken/AK Salmon Full</div>
+                            <div class="option-price">+$3.00</div>
+                        </div>
+                        <div class="custom-option" onclick="toggleAdditionSquare(this, 'Halves Wrapped Separately', 1.00)">
+                            <span class="option-icon">✂️</span>
+                            <div class="option-name">Halves Wrapped Separately</div>
+                            <div class="option-price">+$1.00</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button class="cancel-btn" onclick="closeBuildYourOwn()">Cancel</button>
+                <button class="add-to-cart-btn" onclick="addBuildYourOwnToCart()">Add to Order 🛒</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Specialty Sandwich Modal -->
+    <div class="modal" id="specialtyModal">
+        <div class="modal-content" style="max-width:800px;">
+            <div class="modal-header" style="background:linear-gradient(135deg,var(--dark-red),var(--burgundy));border-radius:30px 30px 0 0;">
+                <button class="close-modal" onclick="closeSpecialtyModal()">&times;</button>
+                <div style="padding-right:3.5rem;">
+                    <h2 id="smTitle" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:4px;color:white;margin-bottom:0.3rem;"></h2>
+                    <div id="smPriceDisplay" style="color:var(--wheat-gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:2px;"></div>
+                </div>
+            </div>
+
+            <div class="modal-body">
+
+                <!-- SIZE -->
+                <div class="customization-section" id="smSizeSection">
+                    <h3 class="sm-section-heading">Size <span class="supporting-text">(Choose 1)</span></h3>
+                    <div class="sm-size-group" id="smSizeGroup"></div>
+                </div>
+
+                <!-- BREAD -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🍞 Bread <span class="supporting-text">(Choose 1)</span></h3>
+                    <div class="sm-bread-grid" id="smBreadGrid"></div>
+                </div>
+
+                <!-- HOLDS -->
+                <div class="customization-section" id="smHoldsSection">
+                    <h3 class="sm-section-heading">✂️ Hold / Remove <span class="supporting-text">(tap to remove)</span></h3>
+                    <p style="font-size:0.8rem;color:#999;margin-bottom:0.8rem;font-family:'Montserrat',sans-serif;">Everything included by default.</p>
+                    <div class="sm-holds-grid" id="smHoldsGrid"></div>
+                </div>
+
+                <!-- ADD PROTEIN -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🥩 Add Extra Protein <span class="supporting-text">(Optional — tap +/− to set portion)</span></h3>
+                    <div class="sm-stepper-grid" id="smProteinGrid"></div>
+                    <div class="sm-stepper-grid" id="smEggGrid" style="margin-top:0.6rem;"></div>
+                </div>
+
+                <!-- ADD CHEESE -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🧀 Add Extra Cheese <span class="supporting-text">(Optional — $0.50/slice)</span></h3>
+                    <div class="sm-stepper-grid" id="smCheeseGrid"></div>
+                </div>
+
+                <!-- ADD VEGGIES -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🥬 Add Extra Veggies <span class="supporting-text">(Optional — $0.25 half · $0.50 full)</span></h3>
+                    <div class="sm-stepper-grid" id="smVeggieGrid"></div>
+                </div>
+
+                <!-- SPREADS -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🧈 Spreads <span class="supporting-text">(Optional)</span></h3>
+                    <div class="sm-spread-group" id="smSpreadGrid"></div>
+                </div>
+
+                <!-- SEASONINGS -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">🧂 Seasonings <span class="supporting-text">(Optional)</span></h3>
+                    <div class="sm-tag-row" id="smSeasoningGrid"></div>
+                </div>
+
+                <!-- WRAPPING -->
+                <div class="customization-section" id="smWrappingSection">
+                    <h3 class="sm-section-heading">📦 Wrapping <span class="supporting-text">(Optional)</span></h3>
+                    <div class="sm-tag-row" id="smWrappingGrid"></div>
+                </div>
+
+                <!-- SPECIAL REQUEST -->
+                <div class="customization-section">
+                    <h3 class="sm-section-heading">✏️ Special Requests</h3>
+                    <textarea id="smSpecialRequest" placeholder="Allergies, other modifications, notes for the kitchen…"
+                        style="width:100%;border:2px solid rgba(212,165,116,0.3);border-radius:12px;padding:1rem;font-family:'Cormorant Garamond',serif;font-size:1rem;resize:vertical;min-height:72px;background:var(--cream);color:var(--soft-black);outline:none;transition:border-color 0.3s;"
+                        onfocus="this.style.borderColor='var(--wheat-gold)'" onblur="this.style.borderColor='rgba(212,165,116,0.3)'"></textarea>
+                </div>
+
+            </div><!-- /modal-body -->
+
+            <div class="modal-footer" style="display:flex;gap:1rem;padding:1.5rem 2rem;background:var(--cream);border-radius:0 0 30px 30px;align-items:center;">
+                <button class="cancel-btn" onclick="closeSpecialtyModal()" style="flex:1;">Cancel</button>
+                <div id="smRunningTotal" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--dark-red);letter-spacing:2px;min-width:100px;text-align:center;">$0.00</div>
+                <button class="add-to-cart-btn" onclick="addSpecialtyToCart()" style="flex:2;">Add to Order 🛒</button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Butter Selection Modal -->
+    <div class="butter-modal" id="butterModal">
+        <div class="butter-modal-content">
+            <h2>🍯 Add Flavored Butter?</h2>
+            <p style="color: #666; margin-bottom: 1rem;">Choose one of our delicious flavored butters to go with your <span id="selectedBreadName" style="font-weight: 700; color: var(--dark-red);"></span></p>
+            
+            <div class="butter-options">
+                <div class="butter-option" onclick="selectButter('Cinnamon Honey', this)">
+                    <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🍯</span>
+                    <div style="font-weight: 600;">Cinnamon Honey</div>
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">+$2.50</div>
+                </div>
+                <div class="butter-option" onclick="selectButter('Garlic Herb', this)">
+                    <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🌿</span>
+                    <div style="font-weight: 600;">Garlic Herb</div>
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">+$2.50</div>
+                </div>
+                <div class="butter-option" onclick="selectButter('Vanilla Honey', this)">
+                    <span style="font-size: 2.5rem; display: block; margin-bottom: 0.5rem;">🍦</span>
+                    <div style="font-weight: 600;">Vanilla Honey</div>
+                    <div style="font-size: 0.85rem; color: #666; margin-top: 0.3rem;">+$2.50</div>
+                </div>
+            </div>
+
+            <div class="butter-modal-buttons">
+                <button class="skip-butter-btn" onclick="skipButter()">No Thanks</button>
+                <button class="confirm-butter-btn" onclick="confirmButter()">Add to Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Great Harvest</h4>
+                <p>Anchorage's premier artisan bakery since 1976. Fresh bread baked daily with love and the finest ingredients.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Hours</h4>
+                <p>Monday - Friday: 6:00 AM - 6:00 PM</p>
+                <p>Saturday: 7:00 AM - 5:00 PM</p>
+                <p>Sunday: 8:00 AM - 4:00 PM</p>
+            </div>
+            <div class="footer-section">
+                <h4>Location</h4>
+                <p>570 E Benson Blvd</p>
+                <p>Anchorage, AK 99503</p>
+                <p><a href="tel:9075618277">(907) 561-8277</a></p>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Newsletter</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Great Harvest Bread Co. - Anchorage. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let basePrice = 12.50;
+        let currentPrice = 12.50;
+        let selectedOptions = {
+            bread: null,
+            cheese: [],
+            veggies: ['lettuce', 'tomato', 'red-onion'],
+            extras: [],
+            condiments: ['mayo'],
+            panini: false
+        };
+
+        // Tab switching for breads section
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + '-tab').classList.add('active');
+            
+            // Activate clicked button
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // Toggle header visibility, background, and transition classes
+            const header = document.getElementById('breadsSectionHeader');
+            const section = document.querySelector('.breads-section');
+            
+            // Remove all tab-specific classes
+            section.classList.remove('daily-active', 'specialty-active', 'sandwiches-active');
+            
+            if (tabName === 'sandwiches') {
+                header.style.display = 'none';
+                section.classList.add('sandwiches-active');
+                // Header text doesn't need to change (hidden)
+            } else if (tabName === 'specialty') {
+                header.style.display = 'block';
+                section.classList.add('specialty-active');
+                // Make header text white for dark background
+                document.getElementById('breadsSectionHeader').style.color = 'white';
+            } else {
+                // Daily favorites
+                header.style.display = 'block';
+                section.classList.add('daily-active');
+                // Reset header text color
+                document.getElementById('breadsSectionHeader').style.color = '';
+            }
+        }
+
+        // Bread ordering with butter option
+        let currentBreadOrder = {
+            name: '',
+            price: 0,
+            butter: null,
+            butterPrice: 2.50
+        };
+
+        function addBreadToOrder(breadName, price, wholeGrain) {
+            event.stopPropagation();
+            currentBreadOrder.name = breadName;
+            currentBreadOrder.price = price;
+            
+            // Show butter selection modal
+            document.getElementById('selectedBreadName').textContent = breadName;
+            document.getElementById('butterModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function selectButter(butterName, element) {
+            // Remove selection from all
+            document.querySelectorAll('.butter-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            
+            // Select this one
+            element.classList.add('selected');
+            currentBreadOrder.butter = butterName;
+        }
+
+        function skipButter() {
+            currentBreadOrder.butter = null;
+            finalizeBreadOrder();
+        }
+
+        function confirmButter() {
+            if (!currentBreadOrder.butter) {
+                alert('Please select a butter or click "No Thanks"');
+                return;
+            }
+            finalizeBreadOrder();
+        }
+
+        function finalizeBreadOrder() {
+            const totalPrice = currentBreadOrder.butter 
+                ? currentBreadOrder.price + currentBreadOrder.butterPrice 
+                : currentBreadOrder.price;
+            
+            const orderSummary = currentBreadOrder.butter
+                ? `${currentBreadOrder.name} + ${currentBreadOrder.butter} Butter - $${totalPrice.toFixed(2)}`
+                : `${currentBreadOrder.name} - $${totalPrice.toFixed(2)}`;
+            
+            // Here you would integrate with Square API
+            console.log('Order placed:', orderSummary);
+            
+            // Visual feedback
+            alert(`✓ Added to cart!\n\n${orderSummary}\n\nIn production, this will sync with Square POS.`);
+            
+            // Close modal
+            document.getElementById('butterModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Reset selections
+            document.querySelectorAll('.butter-option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+            currentBreadOrder.butter = null;
+        }
+
+        // Add regular items (sweets) to order
+        function addItemToOrder(itemName, price) {
+            event.stopPropagation();
+            
+            // Here you would integrate with Square API
+            console.log('Order placed:', {name: itemName, price: price});
+            
+            alert(`✓ Added to cart!\n\n${itemName} - $${price.toFixed(2)}\n\nIn production, this will sync with Square POS.`);
+        }
+
+        // Add sandwich to order with half/whole selection
+        // ══════════════════════════════════════════════════════
+        //  SPECIALTY SANDWICH MODAL
+        // ══════════════════════════════════════════════════════
+
+        // Bread options shared by every sandwich
+        const SM_BREADS = [
+            { name: 'Honey Whole Wheat',   note: null,            extra: 0 },
+            { name: 'Honey White',         note: null,            extra: 0 },
+            { name: 'Cinnamon Chip',       note: null,            extra: 0 },
+            { name: 'Daily Whole Grain',   note: null,            extra: 0 },
+            { name: 'Daily Cheese Bread',  note: 'After 11 AM',   extra: 1.00 },
+            { name: 'Chugach Rustic',      note: null,            extra: 0 },
+            { name: 'Multigrain Rustic',   note: null,            extra: 0 },
+            { name: 'Cranberry Walnut Rustic', note: null,        extra: 0 },
+            { name: 'Daily Cheese Rustic', note: null,            extra: 1.00 },
+            { name: 'Lettuce Wrap',        note: 'Spread on side', extra: 0 },
+        ];
+
+        // Per-sandwich data: name, half price, whole price (null = whole only), holds list
+        const SM_DATA = {
+            // ── Specialty Sandwiches ──
+            turkeyBaconRanch: {
+                name: 'Turkey Bacon Ranch',
+                half: 10.25, whole: 14.25,
+                desc: 'Turkey, bacon strips, savory ranch spread, Swiss cheese, romaine lettuce, tomatoes & red onions.',
+                holds: ['Turkey','Bacon Strips','Ranch Spread','Swiss Cheese','Romaine Lettuce','Tomato','Red Onion']
+            },
+            spicyItalian: {
+                name: 'Spicy Italian',
+                half: 10.25, whole: 14.25,
+                desc: 'Salami, pepperoni, ham, Provolone cheese, pepperoncini, red onion, romaine lettuce, tomatoes, mayonnaise, oil & vinegar.',
+                holds: ['Salami & Pepperoni','Ham','Provolone Cheese','Pepperoncinis','Red Onion','Romaine Lettuce','Tomato','Mayonnaise','Oil & Vinegar']
+            },
+            chickenAlaska: {
+                name: 'Chicken, Alaska',
+                half: 10.25, whole: 14.25,
+                desc: 'Chunks of tender chicken in a seasoned mayo dressing with spicy pecans, red onions, romaine lettuce, tomatoes, salt & pepper.',
+                holds: ['Chicken','Mayonnaise','Red Onion','Romaine Lettuce','Tomato','Salt','Pepper']
+            },
+            chipotleTurkey: {
+                name: 'Chipotle Turkey',
+                half: 10.25, whole: 14.25,
+                desc: 'Turkey, red onions, romaine lettuce, tomato, pepper jack cheese, spicy chipotle spread, salt & pepper.',
+                holds: ['Turkey','Red Onion','Romaine Lettuce','Tomato','Pepper Jack Cheese','Chipotle Spread','Salt','Pepper']
+            },
+            turkeySwiss: {
+                name: 'Turkey & Swiss',
+                half: 10.25, whole: 14.25,
+                desc: 'Turkey, Swiss cheese, mayonnaise, Dijon mustard, red onions, romaine lettuce, tomatoes, salt & pepper.',
+                holds: ['Turkey','Swiss Cheese','Tomato','Romaine Lettuce','Red Onion','Mayonnaise','Dijon Mustard','Salt','Pepper']
+            },
+            hamCheddar: {
+                name: 'Ham & Cheddar',
+                half: 10.25, whole: 14.25,
+                desc: 'Tender slices of ham, red onions, romaine lettuce, tomatoes, cheddar cheese, mayonnaise, Dijon mustard, salt & pepper.',
+                holds: ['Ham','Red Onion','Romaine Lettuce','Tomato','Cheddar Cheese','Mayonnaise','Dijon Mustard','Salt','Pepper']
+            },
+            roastBeefProvolone: {
+                name: 'Roast Beef & Provolone',
+                half: 10.25, whole: 14.25,
+                desc: 'Sliced roast beef, red onions, romaine lettuce, tomatoes, Provolone cheese, Dijon mustard, salt & pepper.',
+                holds: ['Roast Beef','Red Onion','Romaine Lettuce','Tomato','Provolone Cheese','Dijon Mustard','Salt','Pepper']
+            },
+            smokedSalmon: {
+                name: 'Smoked Salmon',
+                half: 10.25, whole: 14.25,
+                desc: 'Smoked salmon mixed with cream cheese & herbs, red onions, romaine lettuce, tomatoes, salt & pepper.',
+                holds: ['Smoked Salmon & Cream Cheese','Red Onion','Romaine Lettuce','Tomato','Salt','Pepper']
+            },
+            dirksSpicyVeggie: {
+                name: "Dirk's Spicy Veggie",
+                half: 10.00, whole: 14.00,
+                desc: 'Homemade hummus, Swiss & cheddar cheese, jalapeños, red onions, romaine lettuce, sprouts, tomatoes, chipotle spread, salt & pepper.',
+                holds: ['Hummus','Swiss Cheese','Cheddar Cheese','Jalapeños','Red Onion','Romaine Lettuce','Sprouts','Tomato','Chipotle Spread','Salt','Pepper']
+            },
+            harvestVeggie: {
+                name: 'Harvest Veggie',
+                half: 10.00, whole: 14.00,
+                desc: 'Provolone & cheddar cheese, red onions, romaine lettuce, sprouts, tomatoes, cucumbers, bell pepper rings, roasted red pepper spread, salt & pepper.',
+                holds: ['Provolone Cheese','Cheddar Cheese','Red Onion','Romaine Lettuce','Sprouts','Tomato','Cucumber','Bell Peppers','Roasted Red Pepper Spread','Salt','Pepper']
+            },
+            pbj: {
+                name: 'Peanut Butter & Jam',
+                half: 5.75, whole: 7.75,
+                desc: 'Creamy peanut butter and strawberry jam.',
+                holds: ['Peanut Butter','Strawberry Jam']
+            },
+            // ── Hot Panini ──
+            hotRoastBeef: {
+                name: 'Hot Roast Beef & Provolone Panini',
+                half: null, whole: 14.75,
+                desc: 'Roast beef, Provolone cheese, red onions, tomatoes, bell pepper rings, mayonnaise, Dijon mustard, salt & pepper.',
+                holds: ['Roast Beef','Provolone Cheese','Red Onion','Tomato','Bell Peppers','Mayonnaise','Dijon Mustard','Salt','Pepper']
+            },
+            hotTurkeyPepperJack: {
+                name: 'Hot Turkey & Pepper Jack Panini',
+                half: null, whole: 14.75,
+                desc: 'Turkey, pepper jack cheese, red onions, tomatoes, bell pepper rings, chipotle spread, salt & pepper.',
+                holds: ['Turkey','Pepper Jack Cheese','Red Onion','Tomato','Bell Peppers','Chipotle Spread','Salt','Pepper']
+            },
+            hotTurkeySwiss: {
+                name: 'Hot Turkey & Swiss Panini',
+                half: null, whole: 14.75,
+                desc: 'Turkey, Swiss cheese, tomatoes, red onions, bell pepper rings, Dijon mustard, mayonnaise, salt & pepper.',
+                holds: ['Turkey','Swiss Cheese','Tomato','Red Onion','Bell Peppers','Dijon Mustard','Mayonnaise','Salt','Pepper']
+            },
+            hotHamCheddar: {
+                name: 'Hot Ham & Cheddar Panini',
+                half: null, whole: 14.75,
+                desc: 'Ham, cheddar cheese, tomatoes, red onions, bell pepper rings, Dijon mustard, mayonnaise, salt & pepper.',
+                holds: ['Ham','Cheddar Cheese','Tomato','Red Onion','Bell Peppers','Dijon Mustard','Mayonnaise','Salt','Pepper']
+            },
+            blt: {
+                name: 'Hot Bacon Lettuce Tomato Panini',
+                half: null, whole: 12.75,
+                desc: 'Bacon, romaine lettuce, tomatoes, mayonnaise, salt & pepper.',
+                holds: ['Bacon','Romaine Lettuce','Tomato','Mayonnaise','Salt','Pepper']
+            },
+            spicyAppleBaconGC: {
+                name: 'Spicy Apple Bacon Grilled Cheese',
+                half: null, whole: 14.75,
+                desc: 'Melted cheddar and Provolone cheeses, thick-sliced apples, bacon, pepper jelly.',
+                holds: ['Cheddar Cheese','Provolone Cheese','Apple Slices','Bacon','Pepper Jelly']
+            },
+            hotCheddarSwiss: {
+                name: 'Hot Cheddar & Swiss Panini',
+                half: null, whole: 12.50,
+                desc: 'Cheddar and Swiss cheeses & our garlic herb spread.',
+                holds: ['Cheddar Cheese','Swiss Cheese','Garlic Herb Spread']
+            },
+            // ── Breakfast ──
+            cheeseEggs: {
+                name: 'Cheese & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Cheddar cheese, eggs, garlic herb spread, salt & pepper.',
+                holds: ['Cheddar Cheese','Eggs','Garlic Herb Spread','Salt','Pepper']
+            },
+            hamEggs: {
+                name: 'Ham & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Ham, cheddar cheese, eggs, garlic herb spread, salt & pepper.',
+                holds: ['Ham','Cheddar Cheese','Eggs','Garlic Herb Spread','Salt','Pepper']
+            },
+            baconEggs: {
+                name: 'Bacon & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Bacon strips, cheddar cheese, eggs, garlic herb spread, salt & pepper.',
+                holds: ['Bacon','Cheddar Cheese','Eggs','Garlic Herb Spread','Salt','Pepper']
+            },
+            redRooster: {
+                name: 'Red Rooster',
+                half: null, whole: 11.50,
+                desc: 'Bacon strips, cheddar cheese, eggs, roasted peppers & onions, garlic herb spread, spicy rooster sauce, salt & pepper.',
+                holds: ['Bacon','Cheddar Cheese','Eggs','Roasted Peppers & Onions','Garlic Herb Spread','Spicy Rooster Sauce','Salt','Pepper']
+            },
+            sausageEggs: {
+                name: 'Sausage & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Sausage patty, cheddar cheese, eggs, garlic herb spread, salt & pepper.',
+                holds: ['Sausage Patty','Cheddar Cheese','Eggs','Garlic Herb Spread','Salt','Pepper']
+            },
+            veggiesEggs: {
+                name: 'Veggies & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Cheddar cheese, eggs, tomatoes, onions, bell pepper rings, garlic herb spread, salt & pepper.',
+                holds: ['Cheddar Cheese','Eggs','Tomato','Onion','Bell Peppers','Garlic Herb Spread','Salt','Pepper']
+            },
+            sweetSavoryHamEggs: {
+                name: 'Sweet & Savory Ham & Eggs',
+                half: null, whole: 11.50,
+                desc: 'Ham, cheddar cheese, eggs, and maple syrup.',
+                holds: ['Ham','Cheddar Cheese','Eggs','Maple Syrup']
+            },
+        };
+
+        let smState = { key: null, size: null, basePrice: 0, bread: null, breadExtra: 0,
+                        holds: new Set(), addons: [], steppers: {}, simpleAddons: {},
+                        spreads: {}, seasonings: new Set(), wrapping: false, note: '' };
+
+        // ── Static add-on data ──────────────────────────────────────────────
+        // Proteins: stepped ½→1 portion. halfPrice / fullPrice.
+        // premium:true = show price label (above standard $2)
+        const SM_PROTEINS = [
+            { name:'Turkey',                       halfPrice:1.00, fullPrice:2.00 },
+            { name:'Ham',                          halfPrice:1.00, fullPrice:2.00 },
+            { name:'Roast Beef',                   halfPrice:1.00, fullPrice:2.00 },
+            { name:'Bacon',                        halfPrice:1.00, fullPrice:2.00 },
+            { name:'Salami & Pepperoni',            halfPrice:1.00, fullPrice:2.00 },
+            { name:'Hummus',                       halfPrice:1.00, fullPrice:2.00 },
+            { name:'Chicken Salad',                halfPrice:1.50, fullPrice:3.00, premium:true },
+            { name:'Smoked Salmon & Cream Cheese', halfPrice:1.50, fullPrice:3.00, premium:true },
+        ];
+        // Simple add (no stepping): Egg
+        const SM_PROTEIN_SIMPLE = [
+            { name:'Egg', price:2.00 },
+        ];
+        // Cheeses: stepped 1 slice→2 slices. slicePrice each.
+        const SM_CHEESES = [
+            { name:'Swiss',       slicePrice:0.50 },
+            { name:'Cheddar',     slicePrice:0.50 },
+            { name:'Pepper Jack', slicePrice:0.50 },
+            { name:'Provolone',   slicePrice:0.50 },
+            { name:'Cream Cheese',slicePrice:0.50, unit:'portion' },
+        ];
+        // Veggies: stepped ½→full. halfPrice / fullPrice.
+        // premium:true = show price (Avocado only)
+        const SM_VEGGIES = [
+            { name:'Avocado',         halfPrice:0.63, fullPrice:1.25, premium:true },
+            { name:'Bell Pepper',     halfPrice:0.25, fullPrice:0.50 },
+            { name:'Cucumbers',       halfPrice:0.25, fullPrice:0.50 },
+            { name:'Dill Pickle',     halfPrice:0.25, fullPrice:0.50 },
+            { name:'Jalapeño',        halfPrice:0.25, fullPrice:0.50 },
+            { name:'Romaine Lettuce', halfPrice:0.25, fullPrice:0.50 },
+            { name:'Red Onion',       halfPrice:0.25, fullPrice:0.50 },
+            { name:'Pepperoncini',    halfPrice:0.25, fullPrice:0.50 },
+            { name:'Sprouts',         halfPrice:0.25, fullPrice:0.50 },
+            { name:'Tomato',          halfPrice:0.25, fullPrice:0.50 },
+        ];
+        const SM_SPREADS = ['Chipotle','Mayonnaise','Dijon Mustard','Yellow Mustard','Roasted Red Pepper','Garlic Herb Spread','Red Rooster Sauce'];
+        const SM_SEASONINGS = ['Oil','Vinegar','Salt','Black Pepper'];
+
+        // ── Render helpers ──────────────────────────────────────────────────
+
+        // Stepped stepper card: 0 → half → full (proteins & veggies)
+        // stepStates stored in smState.steppers[key][name] = 0|1|2
+        function smBuildStepperGrid(containerId, items, key) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = '';
+            items.forEach(item => {
+                const safe = item.name.replace(/'/g,"\\'").replace(/&/g,'&amp;');
+                const priceLabel = item.premium
+                    ? `<span class="sm-stepper-price">½ $${item.halfPrice.toFixed(2)} · full $${item.fullPrice.toFixed(2)}</span>`
+                    : '';
+                el.innerHTML += `
+                <div class="sm-stepper-card" id="smc-${key}-${safe.replace(/[^a-z0-9]/gi,'_')}">
+                    <div class="sm-stepper-name">${item.name}${priceLabel}</div>
+                    <div class="sm-stepper-controls">
+                        <button class="sm-step-btn" onclick="smStep('${safe}','${key}',-1,event)">−</button>
+                        <span class="sm-step-label" id="sml-${key}-${safe.replace(/[^a-z0-9]/gi,'_')}">—</span>
+                        <button class="sm-step-btn" onclick="smStep('${safe}','${key}',1,event)">+</button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        // Simple toggle chips (Egg, Wrapping, etc.)
+        function smBuildSimpleGrid(containerId, items, key) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = '';
+            items.forEach((item, idx) => {
+                const safe = item.name.replace(/'/g,"\\'");
+                el.innerHTML += `<div class="sm-addon-chip" onclick="smToggleSimple(this,'${safe}','${key}',${item.price})">
+                    <span class="sm-addon-name">${item.name}</span>
+                    <span class="sm-addon-price">+$${item.price.toFixed(2)}</span>
+                </div>`;
+            });
+        }
+
+        // Cheese stepper: 0 → 1 slice → 2 slices
+        function smBuildCheeseGrid(containerId, items) {
+            const el = document.getElementById(containerId);
+            el.innerHTML = '';
+            items.forEach(item => {
+                const safe = item.name.replace(/'/g,"\\'").replace(/&/g,'&amp;');
+                const unitLabel = item.unit || 'slice';
+                el.innerHTML += `
+                <div class="sm-stepper-card" id="smc-cheese-${safe.replace(/[^a-z0-9]/gi,'_')}">
+                    <div class="sm-stepper-name">${item.name}</div>
+                    <div class="sm-stepper-controls">
+                        <button class="sm-step-btn" onclick="smStepCheese('${safe}',-1,event)">−</button>
+                        <span class="sm-step-label" id="sml-cheese-${safe.replace(/[^a-z0-9]/gi,'_')}">—</span>
+                        <button class="sm-step-btn" onclick="smStepCheese('${safe}',1,event)">+</button>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function smBuildSpreadGrid() {
+            const el = document.getElementById('smSpreadGrid');
+            el.innerHTML = '';
+            SM_SPREADS.forEach(s => {
+                const safe = s.replace(/'/g,"\\'");
+                el.innerHTML += `<div class="sm-spread-btn" onclick="smCycleSpread(this,'${safe}')">
+                    ${s}<span class="spread-state-label">tap to add</span>
+                </div>`;
+            });
+        }
+
+        function smBuildSeasoningGrid() {
+            const el = document.getElementById('smSeasoningGrid');
+            el.innerHTML = '';
+            SM_SEASONINGS.forEach(s => {
+                const safe = s.replace(/'/g,"\\'");
+                el.innerHTML += `<div class="sm-tag" onclick="smToggleTag(this,'${safe}','seasonings')">${s}</div>`;
+            });
+        }
+
+        function smBuildWrappingGrid() {
+            const el = document.getElementById('smWrappingGrid');
+            el.innerHTML = `<div class="sm-tag" onclick="smToggleWrapping(this)">Halves Wrapped Separately<span class="sm-addon-price" style="margin-left:0.4rem;font-family:Montserrat,sans-serif;font-size:0.7rem;font-weight:700;color:var(--purple-blue);">+$1.00</span></div>`;
+        }
+
+        // ── Toggle callbacks ────────────────────────────────────────────────
+
+        // Stepper for protein & veggie (0=none, 1=half, 2=full)
+        function smStep(name, key, delta, e) {
+            e && e.stopPropagation();
+            const items = key === 'protein' ? SM_PROTEINS : SM_VEGGIES;
+            const item = items.find(i => i.name === name);
+            if (!item) return;
+            if (!smState.steppers[key]) smState.steppers[key] = {};
+            const cur = smState.steppers[key][name] || 0;
+            const next = Math.max(0, Math.min(2, cur + delta));
+            smState.steppers[key][name] = next;
+            const safeId = name.replace(/&amp;/g,'&').replace(/[^a-z0-9]/gi,'_');
+            const labelEl = document.getElementById(`sml-${key}-${safeId}`);
+            const cardEl  = document.getElementById(`smc-${key}-${safeId}`);
+            const labels = ['—', '½ portion', 'full portion'];
+            if (labelEl) labelEl.textContent = labels[next];
+            if (cardEl)  cardEl.classList.toggle('sm-stepper-active', next > 0);
+            smUpdateTotal();
+        }
+
+        // Stepper for cheese (0=none, 1=1 slice, 2=2 slices)
+        function smStepCheese(name, delta, e) {
+            e && e.stopPropagation();
+            const item = SM_CHEESES.find(i => i.name === name);
+            if (!item) return;
+            if (!smState.steppers.cheese) smState.steppers.cheese = {};
+            const cur = smState.steppers.cheese[name] || 0;
+            const next = Math.max(0, Math.min(2, cur + delta));
+            smState.steppers.cheese[name] = next;
+            const safeId = name.replace(/&amp;/g,'&').replace(/[^a-z0-9]/gi,'_');
+            const labelEl = document.getElementById(`sml-cheese-${safeId}`);
+            const cardEl  = document.getElementById(`smc-cheese-${safeId}`);
+            const unitLabel = item.unit || 'slice';
+            const labels = ['—', `1 ${unitLabel}`, `2 ${unitLabel}s`];
+            if (labelEl) labelEl.textContent = labels[next];
+            if (cardEl)  cardEl.classList.toggle('sm-stepper-active', next > 0);
+            smUpdateTotal();
+        }
+
+        // Simple on/off toggle (Egg)
+        function smToggleSimple(el, name, key, price) {
+            if (!smState.simpleAddons) smState.simpleAddons = {};
+            const on = smState.simpleAddons[name];
+            smState.simpleAddons[name] = !on;
+            el.classList.toggle('selected', !on);
+            smUpdateTotal();
+        }
+
+        function smCycleSpread(el, name) {
+            const cur = smState.spreads[name] || 'none';
+            const next = cur === 'none' ? 'light' : cur === 'light' ? 'heavy' : 'none';
+            smState.spreads[name] = next;
+            el.classList.remove('light','heavy');
+            const labels = { none:'tap to add', light:'light spread', heavy:'heavy spread' };
+            el.querySelector('.spread-state-label').textContent = labels[next];
+            if (next !== 'none') el.classList.add(next);
+        }
+
+        function smToggleTag(el, name, stateKey) {
+            const set = stateKey === 'seasonings' ? smState.seasonings : null;
+            if (!set) return;
+            if (set.has(name)) { set.delete(name); el.classList.remove('selected'); }
+            else { set.add(name); el.classList.add('selected'); }
+        }
+
+        function smToggleWrapping(el) {
+            smState.wrapping = !smState.wrapping;
+            el.classList.toggle('selected', smState.wrapping);
+            el.classList.toggle('paid', smState.wrapping);
+            smUpdateTotal();
+        }
+
+
+        function openSpecialtySandwich(key) {
+            if (event) event.stopPropagation();
+            const sd = SM_DATA[key];
+            if (!sd) return;
+
+            smState = { key, size: null, basePrice: 0, bread: null, breadExtra: 0,
+                        holds: new Set(), addons: [], steppers: {}, simpleAddons: {},
+                        spreads: {}, seasonings: new Set(), wrapping: false, note: '' };
+
+            document.getElementById('smTitle').textContent = sd.name;
+            const hasHalf = sd.half !== null;
+            document.getElementById('smPriceDisplay').textContent = hasHalf
+                ? `Half $${sd.half.toFixed(2)}  ·  Whole $${sd.whole.toFixed(2)}`
+                : `Whole $${sd.whole.toFixed(2)}`;
+
+            // Size
+            const sg = document.getElementById('smSizeGroup');
+            if (hasHalf) {
+                sg.innerHTML = `
+                    <div class="sm-size-btn" onclick="smSelectSize(this,'half',${sd.half})">
+                        <span class="sm-size-name">Half</span><span class="sm-size-price">$${sd.half.toFixed(2)}</span>
+                    </div>
+                    <div class="sm-size-btn" onclick="smSelectSize(this,'whole',${sd.whole})">
+                        <span class="sm-size-name">Whole</span><span class="sm-size-price">$${sd.whole.toFixed(2)}</span>
+                    </div>`;
+                document.getElementById('smSizeSection').style.display = '';
+            } else {
+                smState.size = 'whole'; smState.basePrice = sd.whole;
+                sg.innerHTML = '';
+                document.getElementById('smSizeSection').style.display = 'none';
+            }
+
+            // Bread
+            const bg = document.getElementById('smBreadGrid');
+            bg.innerHTML = '';
+            SM_BREADS.forEach(b => {
+                const extraTxt = b.extra > 0 ? `+$${b.extra.toFixed(2)}` : '';
+                const noteTxt = b.note ? (b.note + (extraTxt ? ' · '+extraTxt : '')) : extraTxt;
+                bg.innerHTML += `<div class="sm-bread-btn" onclick="smSelectBread(this,'${b.name.replace(/'/g,"\\'")}',${b.extra})">
+                    ${b.name}${noteTxt ? `<span class="sm-bread-badge">${noteTxt}</span>` : ''}
+                </div>`;
+            });
+
+            // Holds
+            const hg = document.getElementById('smHoldsGrid');
+            hg.innerHTML = '';
+            sd.holds.forEach(h => {
+                hg.innerHTML += `<div class="sm-hold-chip" onclick="smToggleHold(this,'${h.replace(/'/g,"\\'")}')">
+                    <span class="chip-x">✕</span>${h}</div>`;
+            });
+
+            // Add-on sections
+            smBuildStepperGrid('smProteinGrid', SM_PROTEINS, 'protein');
+            smBuildSimpleGrid('smEggGrid', SM_PROTEIN_SIMPLE, 'egg');
+            smBuildCheeseGrid('smCheeseGrid', SM_CHEESES);
+            smBuildStepperGrid('smVeggieGrid', SM_VEGGIES, 'veggie');
+            smBuildSpreadGrid();
+            smBuildSeasoningGrid();
+            document.getElementById('smWrappingSection').style.display = hasHalf ? '' : 'none';
+            if (hasHalf) smBuildWrappingGrid();
+
+            document.getElementById('smSpecialRequest').value = '';
+            smUpdateTotal();
+            document.getElementById('specialtyModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function smSelectSize(el, size, price) {
+            document.querySelectorAll('#smSizeGroup .sm-size-btn').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+            smState.size = size;
+            smState.basePrice = price;
+            smUpdateTotal();
+        }
+
+        function smSelectBread(el, name, extra) {
+            document.querySelectorAll('#smBreadGrid .sm-bread-btn').forEach(b => b.classList.remove('selected'));
+            el.classList.add('selected');
+            smState.bread = name;
+            smState.breadExtra = extra;
+            smUpdateTotal();
+        }
+
+        function smToggleHold(el, ingredient) {
+            if (smState.holds.has(ingredient)) {
+                smState.holds.delete(ingredient);
+                el.classList.remove('held');
+            } else {
+                smState.holds.add(ingredient);
+                el.classList.add('held');
+            }
+        }
+
+        function smUpdateTotal() {
+            const base = smState.basePrice || 0;
+            const total = base + (smState.breadExtra || 0);
+            document.getElementById('smRunningTotal').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function closeSpecialtyModal() {
+            document.getElementById('specialtyModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function addSpecialtyToCart() {
+            const sd = SM_DATA[smState.key];
+            if (!smState.size && sd.half !== null) { alert('Please choose a size — Half or Whole.'); return; }
+            if (!smState.bread) { alert('Please choose a bread.'); return; }
+            let total = (smState.basePrice || 0) + (smState.breadExtra || 0);
+            let addLines = [];
+            if (smState.steppers && smState.steppers.protein) Object.entries(smState.steppers.protein).forEach(([name,val]) => {
+                if (!val) return;
+                const item = SM_PROTEINS.find(i => i.name === name);
+                const cost = val === 1 ? item.halfPrice : item.fullPrice;
+                total += cost; addLines.push(`${name} (${val===1?'½':'full'}) +$${cost.toFixed(2)}`);
+            });
+            if (smState.steppers && smState.steppers.veggie) Object.entries(smState.steppers.veggie).forEach(([name,val]) => {
+                if (!val) return;
+                const item = SM_VEGGIES.find(i => i.name === name);
+                const cost = val === 1 ? item.halfPrice : item.fullPrice;
+                total += cost; addLines.push(`${name} (${val===1?'½':'full'}) +$${cost.toFixed(2)}`);
+            });
+            if (smState.steppers && smState.steppers.cheese) Object.entries(smState.steppers.cheese).forEach(([name,val]) => {
+                if (!val) return;
+                const item = SM_CHEESES.find(i => i.name === name);
+                const cost = val * item.slicePrice;
+                total += cost; addLines.push(`${name} (${val} slice${val>1?'s':''}) +$${cost.toFixed(2)}`);
+            });
+            if (smState.simpleAddons) Object.entries(smState.simpleAddons).forEach(([name,on]) => {
+                if (!on) return;
+                const item = SM_PROTEIN_SIMPLE.find(i => i.name === name);
+                if (item) { total += item.price; addLines.push(`${name} +$${item.price.toFixed(2)}`); }
+            });
+            if (smState.wrapping) total += 1.00;
+            const sizeLabel = smState.size === 'half' ? 'Half' : 'Whole';
+            const holdsStr = smState.holds.size > 0 ? '\nHold: ' + [...smState.holds].join(', ') : '';
+            const addonsStr = addLines.length ? '\nAdd: ' + addLines.join(', ') : '';
+            const spreadsList = Object.entries(smState.spreads).filter(([,v])=>v!=='none').map(([k,v])=>`${k} (${v})`);
+            const spreadsStr = spreadsList.length ? '\nSpreads: ' + spreadsList.join(', ') : '';
+            const seasonStr = smState.seasonings.size > 0 ? '\nSeasonings: ' + [...smState.seasonings].join(', ') : '';
+            const wrapStr = smState.wrapping ? '\nHalves wrapped separately (+$1.00)' : '';
+            const noteStr = document.getElementById('smSpecialRequest').value.trim();
+            alert(`✓ Added to cart!\n\n${sizeLabel} ${sd.name}\nBread: ${smState.bread}${holdsStr}${addonsStr}${spreadsStr}${seasonStr}${wrapStr}${noteStr ? '\nNote: '+noteStr : ''}\n\nTotal: $${total.toFixed(2)}\n\nIn production, this will sync with Square POS.`);
+            closeSpecialtyModal();
+        }
+
+        function addSandwichToOrder(sandwichName, halfPrice, wholePrice) {
+            // fallback — shouldn't be called anymore
+            event && event.stopPropagation();
+            alert(`${sandwichName} — $${wholePrice.toFixed(2)}`);
+        }
+
+        // Open Build-Your-Own sandwich modal
+        function openBuildYourOwn(e) {
+            if (e && e.stopPropagation) {
+                e.stopPropagation();
+            }
+            
+            // Reset Build-Your-Own order
+            buildYourOwnOrder = {
+                size: null,
+                basePrice: 0,
+                bread: null,
+                breadCharge: 0,
+                spreads: [],
+                proteins: {},
+                cheeses: {},
+                veggies: [],
+                seasonings: [],
+                additions: []
+            };
+            
+            // Clear all selections
+            document.querySelectorAll('#buildYourOwnModal .radio-option').forEach(opt => opt.classList.remove('selected'));
+            document.querySelectorAll('#buildYourOwnModal .custom-option').forEach(opt => opt.classList.remove('selected'));
+            
+            // Reset all protein counters to 1
+            document.querySelectorAll('#buildYourOwnModal .protein-count').forEach(counter => {
+                counter.textContent = '1';
+            });
+            
+            // Reset all cheese counters to 2
+            document.querySelectorAll('#buildYourOwnModal .cheese-count').forEach(counter => {
+                counter.textContent = '2';
+            });
+            
+            // Reset total display
+            document.getElementById('buildYourOwnTotal').textContent = '$0.00';
+            
+            // Open the Build-Your-Own modal
+            document.getElementById('buildYourOwnModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeBuildYourOwn() {
+            document.getElementById('buildYourOwnModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Build-Your-Own order tracking
+        let buildYourOwnOrder = {
+            size: null,
+            basePrice: 0,
+            bread: null,
+            breadCharge: 0,
+            spreads: [],
+            proteins: {}, // Now an object: { 'Turkey': 1, 'Ham': 0.5, etc }
+            cheeses: {}, // Object: { 'Swiss': 2, 'Cheddar': 1, etc }
+            veggies: [],
+            seasonings: [],
+            additions: []
+        };
+
+        function selectSize(size, price) {
+            event.currentTarget.parentElement.querySelectorAll('.radio-option').forEach(opt => opt.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+            buildYourOwnOrder.size = size;
+            buildYourOwnOrder.basePrice = price;
+            updateBuildYourOwnTotal();
+        }
+
+        function selectBreadChoice(element, bread, extraCharge = 0) {
+            element.parentElement.querySelectorAll('.custom-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            buildYourOwnOrder.bread = bread;
+            buildYourOwnOrder.breadCharge = extraCharge;
+            updateBuildYourOwnTotal();
+        }
+
+        function selectProtein(element, protein) {
+            // If clicking on a selected protein, deselect it
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                delete buildYourOwnOrder.proteins[protein];
+                
+                // If there are other selected proteins, transfer the 1 portion to the first one
+                const remainingProteins = Object.keys(buildYourOwnOrder.proteins);
+                if (remainingProteins.length > 0) {
+                    buildYourOwnOrder.proteins[remainingProteins[0]] = 1;
+                    // Update the display
+                    document.querySelectorAll('#buildYourOwnModal .custom-option.selected .protein-count').forEach((countEl, idx) => {
+                        if (idx === 0) countEl.textContent = '1';
+                    });
+                }
+            } else {
+                // Selecting a new protein
+                const isFirstProtein = Object.keys(buildYourOwnOrder.proteins).length === 0;
+                element.classList.add('selected');
+                buildYourOwnOrder.proteins[protein] = isFirstProtein ? 1 : 0.5;
+                
+                // Update the counter display for this protein
+                const counter = element.querySelector('.protein-count');
+                if (counter) {
+                    counter.textContent = buildYourOwnOrder.proteins[protein];
+                }
+            }
+            updateBuildYourOwnTotal();
+        }
+
+        // Adjust protein portions with +/- buttons (0.5, 1, 1.5, 2)
+        function adjustProteinPortions(event, button, delta) {
+            event.stopPropagation(); // Don't trigger selectProtein
+            
+            const option = button.closest('.custom-option');
+            const protein = option.querySelector('.option-name').textContent;
+            const counter = option.querySelector('.protein-count');
+            
+            if (!buildYourOwnOrder.proteins[protein]) return;
+            
+            let currentPortion = buildYourOwnOrder.proteins[protein];
+            let newPortion = currentPortion + delta;
+            
+            // Limit to 0.5-2 portions
+            if (newPortion < 0.5 || newPortion > 2) return;
+            
+            buildYourOwnOrder.proteins[protein] = newPortion;
+            counter.textContent = newPortion;
+            updateBuildYourOwnTotal();
+        }
+
+        function selectCheese(element, cheese) {
+            // If clicking on a selected cheese, deselect it
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                delete buildYourOwnOrder.cheeses[cheese];
+                
+                // If there are other selected cheeses, transfer the 2 slices to the first one
+                const remainingCheeses = Object.keys(buildYourOwnOrder.cheeses);
+                if (remainingCheeses.length > 0) {
+                    buildYourOwnOrder.cheeses[remainingCheeses[0]] = 2;
+                    // Update the display
+                    document.querySelectorAll('#buildYourOwnModal .custom-option.selected .cheese-count').forEach((countEl, idx) => {
+                        if (idx === 0) countEl.textContent = '2';
+                    });
+                }
+            } else {
+                // Selecting a new cheese
+                const isFirstCheese = Object.keys(buildYourOwnOrder.cheeses).length === 0;
+                element.classList.add('selected');
+                buildYourOwnOrder.cheeses[cheese] = isFirstCheese ? 2 : 1;
+                
+                // Update the counter display for this cheese
+                const counter = element.querySelector('.cheese-count');
+                if (counter) {
+                    counter.textContent = buildYourOwnOrder.cheeses[cheese];
+                }
+            }
+            updateBuildYourOwnTotal();
+        }
+
+        // Adjust cheese slices with +/- buttons
+        function adjustCheeseSlices(event, button, delta) {
+            event.stopPropagation(); // Don't trigger selectCheese
+            
+            const option = button.closest('.custom-option');
+            const cheese = option.querySelector('.option-name').textContent;
+            const counter = option.querySelector('.cheese-count');
+            
+            if (!buildYourOwnOrder.cheeses[cheese]) return;
+            
+            let currentSlices = buildYourOwnOrder.cheeses[cheese];
+            let newSlices = currentSlices + delta;
+            
+            // Limit to 1-4 slices
+            if (newSlices < 1 || newSlices > 4) return;
+            
+            buildYourOwnOrder.cheeses[cheese] = newSlices;
+            counter.textContent = newSlices;
+            updateBuildYourOwnTotal();
+        }
+
+        // New square toggle functions
+        function toggleSpreadSquare(element, spread) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                buildYourOwnOrder.spreads = buildYourOwnOrder.spreads.filter(s => s !== spread);
+            } else {
+                element.classList.add('selected');
+                buildYourOwnOrder.spreads.push(spread);
+            }
+            updateBuildYourOwnTotal();
+        }
+
+        function toggleVeggieSquare(element, veggie) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                buildYourOwnOrder.veggies = buildYourOwnOrder.veggies.filter(v => v !== veggie);
+            } else {
+                element.classList.add('selected');
+                buildYourOwnOrder.veggies.push(veggie);
+            }
+            updateBuildYourOwnTotal();
+        }
+
+        function toggleSeasoningSquare(element, seasoning) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                buildYourOwnOrder.seasonings = buildYourOwnOrder.seasonings.filter(s => s !== seasoning);
+            } else {
+                element.classList.add('selected');
+                buildYourOwnOrder.seasonings.push(seasoning);
+            }
+        }
+
+        function toggleAdditionSquare(element, addition, price) {
+            if (element.classList.contains('selected')) {
+                element.classList.remove('selected');
+                buildYourOwnOrder.additions = buildYourOwnOrder.additions.filter(a => a.name !== addition);
+            } else {
+                element.classList.add('selected');
+                buildYourOwnOrder.additions.push({name: addition, price: price});
+            }
+            updateBuildYourOwnTotal();
+        }
+
+        function updateBuildYourOwnTotal() {
+            let total = buildYourOwnOrder.basePrice || 0;
+            
+            // Add bread extra charge (e.g., Daily Cheese Rustic +$1)
+            total += buildYourOwnOrder.breadCharge || 0;
+            
+            // Add extra spread charges (1 free, additional +$0.50)
+            if (buildYourOwnOrder.spreads.length > 1) {
+                total += (buildYourOwnOrder.spreads.length - 1) * 0.50;
+            }
+            
+            // Add protein charges based on portions
+            // First protein gets 1 portion free, then $1 per half portion, $2 per full portion
+            if (buildYourOwnOrder.proteins && Object.keys(buildYourOwnOrder.proteins).length > 0) {
+                let totalPortions = 0;
+                Object.values(buildYourOwnOrder.proteins).forEach(portions => {
+                    totalPortions += portions;
+                });
+                
+                // First 1 portion free, then $1 per 0.5 portion ($2 per full portion)
+                if (totalPortions > 1) {
+                    total += (totalPortions - 1) * 2.00; // $2 per full portion beyond first
+                }
+            }
+            
+            // Add cheese charges based on slices
+            // First cheese gets 2 slices free, then $0.50 per additional slice
+            if (buildYourOwnOrder.cheeses && Object.keys(buildYourOwnOrder.cheeses).length > 0) {
+                let totalSlices = 0;
+                Object.values(buildYourOwnOrder.cheeses).forEach(slices => {
+                    totalSlices += slices;
+                });
+                
+                // First 2 slices free, then $0.50 each
+                if (totalSlices > 2) {
+                    total += (totalSlices - 2) * 0.50;
+                }
+            }
+            
+            // Add extra veggie charges (first 4 free, then +$0.50 each)
+            if (buildYourOwnOrder.veggies.length > 4) {
+                total += (buildYourOwnOrder.veggies.length - 4) * 0.50;
+            }
+            
+            // Add all additions
+            buildYourOwnOrder.additions.forEach(addition => {
+                total += addition.price;
+            });
+            
+            const totalElement = document.getElementById('buildYourOwnTotal');
+            totalElement.textContent = `$${total.toFixed(2)}`;
+            
+            // Add pulse animation
+            totalElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                totalElement.style.transform = 'scale(1)';
+            }, 200);
+        }
+
+        function addBuildYourOwnToCart() {
+            // Validate required fields
+            if (!buildYourOwnOrder.size) {
+                alert('Please select a size (Half or Whole)');
+                return;
+            }
+            if (!buildYourOwnOrder.bread) {
+                alert('Please select a bread');
+                return;
+            }
+            if (!buildYourOwnOrder.proteins || Object.keys(buildYourOwnOrder.proteins).length === 0) {
+                alert('Please select at least one meat/hummus');
+                return;
+            }
+            if (!buildYourOwnOrder.cheeses || Object.keys(buildYourOwnOrder.cheeses).length === 0) {
+                alert('Please select at least one cheese');
+                return;
+            }
+            
+            // Calculate final price (using the same logic as updateBuildYourOwnTotal)
+            let total = buildYourOwnOrder.basePrice;
+            total += buildYourOwnOrder.breadCharge || 0;
+            if (buildYourOwnOrder.spreads.length > 1) {
+                total += (buildYourOwnOrder.spreads.length - 1) * 0.50;
+            }
+            
+            // Calculate protein charges
+            let totalPortions = 0;
+            Object.values(buildYourOwnOrder.proteins).forEach(portions => {
+                totalPortions += portions;
+            });
+            if (totalPortions > 1) {
+                total += (totalPortions - 1) * 2.00;
+            }
+            
+            // Calculate cheese charges
+            let totalSlices = 0;
+            Object.values(buildYourOwnOrder.cheeses).forEach(slices => {
+                totalSlices += slices;
+            });
+            if (totalSlices > 2) {
+                total += (totalSlices - 2) * 0.50;
+            }
+            
+            if (buildYourOwnOrder.veggies.length > 4) {
+                total += (buildYourOwnOrder.veggies.length - 4) * 0.50;
+            }
+            buildYourOwnOrder.additions.forEach(addition => {
+                total += addition.price;
+            });
+            
+            // Format protein summary
+            const proteinList = Object.entries(buildYourOwnOrder.proteins).map(([protein, portions]) => 
+                `${protein} (${portions === 0.5 ? '1/2' : portions} portion${portions > 1 ? 's' : ''})`
+            ).join(', ');
+            
+            // Format cheese summary
+            const cheeseList = Object.entries(buildYourOwnOrder.cheeses).map(([cheese, slices]) => 
+                `${cheese} (${slices} slice${slices > 1 ? 's' : ''})`
+            ).join(', ');
+            
+            // Create order summary
+            const summary = `Build-Your-Own Sandwich (${buildYourOwnOrder.size})
+Bread: ${buildYourOwnOrder.bread}
+Protein: ${proteinList}
+Cheese: ${cheeseList}
+${buildYourOwnOrder.spreads.length > 0 ? 'Spreads: ' + buildYourOwnOrder.spreads.join(', ') : ''}
+${buildYourOwnOrder.veggies.length > 0 ? 'Veggies (' + buildYourOwnOrder.veggies.length + '): ' + buildYourOwnOrder.veggies.join(', ') : ''}
+${buildYourOwnOrder.seasonings.length > 0 ? 'Seasonings: ' + buildYourOwnOrder.seasonings.join(', ') : ''}
+${buildYourOwnOrder.additions.length > 0 ? 'Additions: ' + buildYourOwnOrder.additions.map(a => a.name).join(', ') : ''}
+Total: $${total.toFixed(2)}`;
+            
+            console.log('Build-Your-Own Order:', buildYourOwnOrder);
+            alert(`✓ Added to cart!\n\n${summary}\n\nIn production, this will sync with Square POS.`);
+            
+            closeBuildYourOwn();
+        }
+
+        // Specialty Items Data by Day
+        const specialtyMenu = {
+            Monday: {
+                breads: [
+                    {name: 'Dakota', icon: '🌾', price: 7.50, wholeGrain: true},
+                    {name: 'Asiago Rustic', icon: '🧀', price: 8.00},
+                    {name: 'Spinach Feta', icon: '🥬', price: 8.50},
+                    {name: 'White Chocolate Cherry', icon: '🍒', price: 8.50}
+                ],
+                sweets: [
+                    {name: 'Oatmeal Raisin Cookies', icon: '🍪', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Raspberry Scones', icon: '🥐', price: 3.50, type: 'Scones'},
+                    {name: 'Raspberry White Choco Blondie', icon: '🍰', price: 4.50, type: 'Bars'},
+                    {name: 'Cinnamon Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread', heart: true}
+                ]
+            },
+            Tuesday: {
+                breads: [
+                    {name: 'Potato Cheddar Chive', icon: '🥔', price: 8.00},
+                    {name: 'Caraway Rye', icon: '🍞', price: 7.00},
+                    {name: 'Parmesan Basil Rustic', icon: '🌿', price: 8.00},
+                    {name: 'Peanut Butter Chocolate Chip', icon: '🥜', price: 8.50, heart: true}
+                ],
+                sweets: [
+                    {name: 'PB Cookies', icon: '🍪', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'PB Chocolate Chip Cookies', icon: '🥠', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Blueberry Scones', icon: '🫐', price: 3.50, type: 'Scones'},
+                    {name: 'Lemon Poppy Seed Muffins', icon: '🍋', price: 3.00, type: 'Muffins'},
+                    {name: 'Brownies', icon: '🍫', price: 4.50, type: 'Bars'},
+                    {name: 'Chocolate Brownie Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread'}
+                ]
+            },
+            Wednesday: {
+                breads: [
+                    {name: 'Dakota', icon: '🌾', price: 7.50, wholeGrain: true},
+                    {name: 'Asiago Rustic', icon: '🧀', price: 8.00},
+                    {name: 'Baker\'s Surprise', icon: '🎁', price: 8.00},
+                    {name: 'White Chocolate Cherry', icon: '🍒', price: 8.50}
+                ],
+                sweets: [
+                    {name: 'Gingersnaps', icon: '🍪', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Mixed Berries Scones', icon: '🫐', price: 3.50, type: 'Scones'},
+                    {name: 'Cappuccino Chocolate Muffins', icon: '☕', price: 3.00, type: 'Muffins'},
+                    {name: 'Fruit Bars', icon: '🍇', price: 4.50, type: 'Bars'},
+                    {name: 'Cinnamon Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread', heart: true}
+                ]
+            },
+            Thursday: {
+                breads: [
+                    {name: 'Woodstock', icon: '🌾', price: 7.50, wholeGrain: true},
+                    {name: 'Cheese Garlic', icon: '🧄', price: 8.00},
+                    {name: 'Parmesan Basil Rustic', icon: '🌿', price: 8.00},
+                    {name: 'Peanut Butter Chocolate Chip', icon: '🥜', price: 8.50, heart: true}
+                ],
+                sweets: [
+                    {name: 'Snickerdoodles', icon: '🍪', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Raspberry Scones', icon: '🥐', price: 3.50, type: 'Scones'},
+                    {name: 'Lemon Poppy Seed Muffins', icon: '🍋', price: 3.00, type: 'Muffins'},
+                    {name: 'Raspberry White Choco Blondie', icon: '🍰', price: 4.50, type: 'Bars'},
+                    {name: 'Chocolate Brownie Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread'}
+                ]
+            },
+            Friday: {
+                breads: [
+                    {name: 'High 5 Fiber', icon: '🌾', price: 7.50, wholeGrain: true},
+                    {name: 'Asiago Pesto', icon: '🌿', price: 8.50},
+                    {name: 'Asiago Rustic', icon: '🧀', price: 8.00},
+                    {name: 'French Baguette', icon: '🥖', price: 5.00},
+                    {name: 'White Chocolate Cherry', icon: '🍒', price: 8.50}
+                ],
+                sweets: [
+                    {name: 'Salted Caramel Cookies', icon: '🍪', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Blueberry Scones', icon: '🫐', price: 3.50, type: 'Scones'},
+                    {name: 'Cappuccino Chocolate Muffins', icon: '☕', price: 3.00, type: 'Muffins'},
+                    {name: 'Brownies', icon: '🍫', price: 4.50, type: 'Bars'},
+                    {name: 'Cinnamon Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread', heart: true}
+                ]
+            },
+            Saturday: {
+                breads: [
+                    {name: 'Dakota', icon: '🌾', price: 7.50, wholeGrain: true},
+                    {name: 'Parmesan Basil Rustic', icon: '🌿', price: 8.00},
+                    {name: 'Jalapeño Jack Corn', icon: '🌶️', price: 8.50},
+                    {name: 'Peanut Butter Chocolate Chip', icon: '🥜', price: 8.50, heart: true}
+                ],
+                sweets: [
+                    {name: 'Turtle Cookies', icon: '🐢', price: 8.50, type: 'Cookies', heart: true},
+                    {name: 'Mixed Berries Scones', icon: '🫐', price: 3.50, type: 'Scones'},
+                    {name: 'Lemon Poppy Seed Muffins', icon: '🍋', price: 3.00, type: 'Muffins'},
+                    {name: 'Fruit Bars', icon: '🍇', price: 4.50, type: 'Bars'},
+                    {name: 'Chocolate Brownie Tea Cake', icon: '🎂', price: 7.00, type: 'Pound Bread'}
+                ]
+            }
+        };
+
+        // Load Today's Specialty Items
+        function loadTodaySpecialty() {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const today = days[new Date().getDay()];
+            
+            // Sunday - show message that they're closed or show Saturday's items
+            const dayToShow = today === 'Sunday' ? 'Saturday' : today;
+            const todayMenu = specialtyMenu[dayToShow];
+            
+            if (!todayMenu) return;
+
+            // Set title
+            document.getElementById('todayTitle').textContent = today === 'Sunday' 
+                ? "SPECIALTY ITEMS (Saturday's Menu - We're Closed Sunday)" 
+                : `TODAY'S SPECIALTY - ${today.toUpperCase()}`;
+
+            // Populate Specialty Breads
+            const breadsGrid = document.getElementById('specialtyBreadsGrid');
+            breadsGrid.innerHTML = '';
+            todayMenu.breads.forEach(bread => {
+                const badge = bread.wholeGrain ? '<span class="bread-badge">100% Whole Grain</span>' : '';
+                const heartIcon = bread.heart ? ' ♥️' : '';
+                breadsGrid.innerHTML += `
+                    <div class="bread-card" onclick="addBreadToOrder('${bread.name}${heartIcon}', ${bread.price}, ${bread.wholeGrain || false})">
+                        <span class="bread-card-icon">${bread.icon}</span>
+                        <h3>${bread.name}${heartIcon}</h3>
+                        ${badge}
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$${bread.price.toFixed(2)}</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                `;
+            });
+
+            // Populate Specialty Sweets
+            const sweetsGrid = document.getElementById('specialtySweetsGrid');
+            sweetsGrid.innerHTML = '';
+            todayMenu.sweets.forEach(sweet => {
+                const heartIcon = sweet.heart ? ' ♥️' : '';
+                sweetsGrid.innerHTML += `
+                    <div class="bread-card" onclick="addItemToOrder('${sweet.name}${heartIcon}', ${sweet.price})">
+                        <span class="bread-card-icon">${sweet.icon}</span>
+                        <h3>${sweet.name}${heartIcon}</h3>
+                        <p style="font-size: 0.85rem; color: var(--purple-blue); margin-top: 0.5rem; font-weight: 600;">${sweet.type}</p>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$${sweet.price.toFixed(2)}</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                `;
+            });
+        }
+
+        // Load specialty items when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTodaySpecialty();
+            // Initialize with daily tab active transition
+            document.querySelector('.breads-section').classList.add('daily-active');
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Close specialty modal when clicking outside
+        document.getElementById('specialtyModal').addEventListener('click', function(e) {
+            if (e.target === this) closeSpecialtyModal();
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .menu-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        function toggleAccordion(el) {
+            el.classList.toggle('active');
+            el.nextElementSibling.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
