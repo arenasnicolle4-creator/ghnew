@@ -1385,12 +1385,20 @@
                 font-size: 0.9rem;
                 flex: 0 0 auto;
                 min-width: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
             .add-to-cart-btn {
                 padding: 0.75rem 1rem;
                 font-size: 0.9rem;
                 flex: 1;
+            }
+
+            /* Specialty modal title - reduce padding so close button doesn't overlap */
+            #specialtyModal .modal-header > div {
+                padding-right: 2.5rem !important;
             }
 
             /* Running total compact */
@@ -1471,6 +1479,10 @@
                 gap: 0.8rem;
             }
 
+            .byo-header-left {
+                padding-right: 2rem;
+            }
+
             .byo-modal-title {
                 font-size: 1.4rem !important;
                 letter-spacing: 2px !important;
@@ -1541,6 +1553,9 @@
             cursor: pointer;
             transition: all 0.3s ease;
             flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
 
@@ -1855,6 +1870,7 @@
 
         .byo-header-left {
             flex: 1;
+            padding-right: 2.5rem;
         }
 
         .byo-modal-title {
