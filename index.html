@@ -1475,35 +1475,30 @@
 
             .byo-header-flex {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 0.8rem;
+                align-items: center;
+                gap: 0;
+                justify-content: center;
             }
 
             .byo-header-left {
-                padding-right: 2rem;
+                padding-right: 0;
+                text-align: center;
+                width: 100%;
             }
 
             .byo-modal-title {
-                font-size: 1.4rem !important;
+                font-size: 1.5rem !important;
                 letter-spacing: 2px !important;
-                margin-bottom: 0.6rem;
+                margin-bottom: 0;
             }
 
+            /* Hide size buttons and running total on mobile - they're in the body */
             .byo-size-buttons {
-                width: 100%;
-                justify-content: flex-start;
-            }
-
-            .byo-size-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.85rem;
+                display: none;
             }
 
             .byo-running-total {
-                padding: 0.8rem 1.5rem;
-                font-size: 1.3rem;
-                min-width: auto;
-                align-self: flex-end;
+                display: none;
             }
         }
     
