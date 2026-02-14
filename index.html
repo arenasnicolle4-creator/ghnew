@@ -1474,31 +1474,36 @@
             }
 
             .byo-header-flex {
-                flex-direction: column;
+                flex-direction: row;
                 align-items: center;
-                gap: 0;
-                justify-content: center;
+                gap: 1rem;
+                justify-content: space-between;
             }
 
             .byo-header-left {
                 padding-right: 0;
-                text-align: center;
-                width: 100%;
+                text-align: left;
+                flex: 1;
             }
 
             .byo-modal-title {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
                 letter-spacing: 2px !important;
                 margin-bottom: 0;
             }
 
-            /* Hide size buttons and running total on mobile - they're in the body */
+            /* Hide size buttons on mobile - they're in the body */
             .byo-size-buttons {
                 display: none;
             }
 
+            /* Show compact running total on mobile */
             .byo-running-total {
-                display: none;
+                padding: 0.6rem 1.2rem;
+                font-size: 1.4rem;
+                min-width: auto;
+                border-radius: 15px;
+                letter-spacing: 2px;
             }
         }
     
@@ -2290,6 +2295,129 @@
             color: white;
         }
         .sm-tag.selected.paid { background: linear-gradient(135deg, var(--dark-red), var(--burgundy)); border-color: var(--burgundy); }
+
+        /* Success Toast Notification */
+        .success-toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: white;
+            border-radius: 25px;
+            padding: 2.5rem 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            z-index: 10000;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .success-toast.show {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--wheat-gold), var(--dark-red));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 3rem;
+            animation: successPop 0.6s ease;
+        }
+
+        @keyframes successPop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .success-toast h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: var(--dark-red);
+            margin-bottom: 0.5rem;
+        }
+
+        .success-toast p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .success-toast-details {
+            background: var(--cream);
+            border-radius: 15px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .success-toast-details p {
+            margin: 0.3rem 0;
+            font-size: 0.85rem;
+            color: var(--soft-black);
+        }
+
+        .success-toast-total {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dark-red);
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 2px solid rgba(212,165,116,0.3);
+        }
+
+        .toast-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 9999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .toast-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        @media (max-width: 768px) {
+            .success-toast {
+                padding: 2rem 1.5rem;
+                max-width: 340px;
+            }
+
+            .success-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            .success-toast h3 {
+                font-size: 1.5rem;
+            }
+
+            .success-toast p {
+                font-size: 0.85rem;
+            }
+        }
 
         /* Accordion Drawers */
         .accordion-section { margin: 2rem auto; max-width: 1000px; }
@@ -3815,12 +3943,41 @@
             document.getElementById('smRunningTotal').textContent = `$${total.toFixed(2)}`;
         }
 
+        // ── Success Toast ──────────────────────────────────────────────────
+        function showSuccessToast(title, message, details, total) {
+            console.log('showSuccessToast called:', { title, message, details, total });
+            const overlay = document.getElementById('toastOverlay');
+            const toast = document.getElementById('successToast');
+            const detailsEl = document.getElementById('toastDetails');
+            
+            if (!overlay || !toast || !detailsEl) {
+                console.error('Toast elements not found:', { overlay, toast, detailsEl });
+                return;
+            }
+            
+            document.querySelector('.success-toast h3').textContent = title;
+            document.getElementById('toastMessage').textContent = message;
+            
+            detailsEl.innerHTML = details + `<div class="success-toast-total">Total: ${total}</div>`;
+            
+            overlay.classList.add('show');
+            toast.classList.add('show');
+            
+            setTimeout(() => hideSuccessToast(), 3000);
+        }
+
+        function hideSuccessToast() {
+            document.getElementById('toastOverlay').classList.remove('show');
+            document.getElementById('successToast').classList.remove('show');
+        }
+
         function closeSpecialtyModal() {
             document.getElementById('specialtyModal').classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
         function addSpecialtyToCart() {
+            console.log('addSpecialtyToCart called');
             const sd = SM_DATA[smState.key];
             if (!smState.size && sd.half !== null) { alert('Please choose a size — Half or Whole.'); return; }
             if (!smState.bread) { alert('Please choose a bread.'); return; }
@@ -3858,7 +4015,18 @@
             const seasonStr = smState.seasonings.size > 0 ? '\nSeasonings: ' + [...smState.seasonings].join(', ') : '';
             const wrapStr = smState.wrapping ? '\nHalves wrapped separately (+$1.00)' : '';
             const noteStr = document.getElementById('smSpecialRequest').value.trim();
-            alert(`✓ Added to cart!\n\n${sizeLabel} ${sd.name}\nBread: ${smState.bread}${holdsStr}${addonsStr}${spreadsStr}${seasonStr}${wrapStr}${noteStr ? '\nNote: '+noteStr : ''}\n\nTotal: $${total.toFixed(2)}\n\nIn production, this will sync with Square POS.`);
+            
+            // Build toast details HTML
+            let detailsHTML = `<p><strong>${sizeLabel} ${sd.name}</strong></p>`;
+            detailsHTML += `<p>Bread: ${smState.bread}</p>`;
+            if (smState.holds.size > 0) detailsHTML += `<p>Hold: ${[...smState.holds].join(', ')}</p>`;
+            if (addLines.length) detailsHTML += `<p>Add: ${addLines.join(', ')}</p>`;
+            if (spreadsList.length) detailsHTML += `<p>Spreads: ${spreadsList.join(', ')}</p>`;
+            if (smState.seasonings.size > 0) detailsHTML += `<p>Seasonings: ${[...smState.seasonings].join(', ')}</p>`;
+            if (smState.wrapping) detailsHTML += `<p>Halves wrapped separately</p>`;
+            if (noteStr) detailsHTML += `<p>Note: ${noteStr}</p>`;
+            
+            showSuccessToast('Added to Cart!', 'Your sandwich is ready to order', detailsHTML, `$${total.toFixed(2)}`);
             closeSpecialtyModal();
         }
 
@@ -4230,19 +4398,18 @@
                 `${cheese} (${slices} slice${slices > 1 ? 's' : ''})`
             ).join(', ');
             
-            // Create order summary
-            const summary = `Build-Your-Own Sandwich (${buildYourOwnOrder.size})
-Bread: ${buildYourOwnOrder.bread}
-Protein: ${proteinList}
-Cheese: ${cheeseList}
-${buildYourOwnOrder.spreads.length > 0 ? 'Spreads: ' + buildYourOwnOrder.spreads.join(', ') : ''}
-${buildYourOwnOrder.veggies.length > 0 ? 'Veggies (' + buildYourOwnOrder.veggies.length + '): ' + buildYourOwnOrder.veggies.join(', ') : ''}
-${buildYourOwnOrder.seasonings.length > 0 ? 'Seasonings: ' + buildYourOwnOrder.seasonings.join(', ') : ''}
-${buildYourOwnOrder.additions.length > 0 ? 'Additions: ' + buildYourOwnOrder.additions.map(a => a.name).join(', ') : ''}
-Total: $${total.toFixed(2)}`;
+            // Create order summary for toast
+            let detailsHTML = `<p><strong>Build-Your-Own (${buildYourOwnOrder.size})</strong></p>`;
+            detailsHTML += `<p>Bread: ${buildYourOwnOrder.bread}</p>`;
+            detailsHTML += `<p>Protein: ${proteinList}</p>`;
+            detailsHTML += `<p>Cheese: ${cheeseList}</p>`;
+            if (buildYourOwnOrder.spreads.length > 0) detailsHTML += `<p>Spreads: ${buildYourOwnOrder.spreads.join(', ')}</p>`;
+            if (buildYourOwnOrder.veggies.length > 0) detailsHTML += `<p>Veggies (${buildYourOwnOrder.veggies.length}): ${buildYourOwnOrder.veggies.join(', ')}</p>`;
+            if (buildYourOwnOrder.seasonings.length > 0) detailsHTML += `<p>Seasonings: ${buildYourOwnOrder.seasonings.join(', ')}</p>`;
+            if (buildYourOwnOrder.additions.length > 0) detailsHTML += `<p>Additions: ${buildYourOwnOrder.additions.map(a => a.name).join(', ')}</p>`;
             
             console.log('Build-Your-Own Order:', buildYourOwnOrder);
-            alert(`✓ Added to cart!\n\n${summary}\n\nIn production, this will sync with Square POS.`);
+            showSuccessToast('Added to Cart!', 'Your custom sandwich is ready to order', detailsHTML, `$${total.toFixed(2)}`);
             
             closeBuildYourOwn();
         }
@@ -4445,5 +4612,14 @@ Total: $${total.toFixed(2)}`;
             el.nextElementSibling.classList.toggle('active');
         }
     </script>
+    <!-- Success Toast Notification -->
+    <div class="toast-overlay" id="toastOverlay" onclick="hideSuccessToast()"></div>
+    <div class="success-toast" id="successToast">
+        <div class="success-icon">✓</div>
+        <h3>Added to Cart!</h3>
+        <p id="toastMessage">Your sandwich has been added</p>
+        <div class="success-toast-details" id="toastDetails"></div>
+    </div>
+
 </body>
 </html>
