@@ -1397,13 +1397,28 @@
             }
 
             /* Specialty modal title - reduce padding so close button doesn't overlap */
-            #specialtyModal .modal-header > div {
-                padding-right: 2.5rem !important;
+            .sm-header-left {
+                padding-right: 2rem !important;
+            }
+
+            #smTitle {
+                font-size: 1.3rem !important;
+                letter-spacing: 2px !important;
+            }
+
+            #smPriceDisplay {
+                font-size: 0.85rem !important;
+            }
+
+            .sm-running-total {
+                padding: 0.5rem 1rem !important;
+                font-size: 1.2rem !important;
+                min-width: auto !important;
+                border-radius: 12px !important;
             }
 
             /* Running total compact */
-            #byoRunningTotal,
-            #smRunningTotal {
+            #byoRunningTotal {
                 font-size: 1.2rem !important;
                 min-width: auto !important;
                 letter-spacing: 1px !important;
@@ -1858,6 +1873,38 @@
         .byo-modal-header {
             background: linear-gradient(135deg, var(--cream), white) !important;
             border-bottom: 2px solid rgba(212,165,116,0.3);
+        }
+
+        /* Specialty Modal Header Structure */
+        .sm-modal-header {
+            position: relative;
+        }
+
+        .sm-header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+        }
+
+        .sm-header-left {
+            flex: 1;
+            padding-right: 2.5rem;
+        }
+
+        .sm-running-total {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 20px;
+            font-size: 1.6rem;
+            font-weight: 300;
+            min-width: 120px;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            letter-spacing: 2px;
+            border: 2px solid rgba(255,255,255,0.3);
         }
 
         .byo-header-flex {
@@ -3175,6 +3222,14 @@
                     </div>
                 </div>
 
+                <!-- SPECIAL REQUEST -->
+                <div class="customization-section">
+                    <h3>✏️ Special Requests <span class="supporting-text">(Optional)</span></h3>
+                    <textarea id="byoSpecialRequest" placeholder="Allergies, other modifications, notes for the kitchen…"
+                        style="width:100%;border:2px solid rgba(212,165,116,0.3);border-radius:12px;padding:1rem;font-family:'Cormorant Garamond',serif;font-size:1rem;resize:vertical;min-height:72px;background:var(--cream);color:var(--soft-black);outline:none;transition:border-color 0.3s;"
+                        onfocus="this.style.borderColor='var(--wheat-gold)'" onblur="this.style.borderColor='rgba(212,165,116,0.3)'"></textarea>
+                </div>
+
             </div>
 
             <div class="modal-footer">
@@ -3187,11 +3242,14 @@
     <!-- Specialty Sandwich Modal -->
     <div class="modal" id="specialtyModal">
         <div class="modal-content" style="max-width:800px;">
-            <div class="modal-header" style="background:linear-gradient(135deg,var(--dark-red),var(--burgundy));border-radius:30px 30px 0 0;">
+            <div class="modal-header sm-modal-header" style="background:linear-gradient(135deg,var(--dark-red),var(--burgundy));border-radius:30px 30px 0 0;position:sticky;top:0;z-index:100;">
                 <button class="close-modal" onclick="closeSpecialtyModal()">&times;</button>
-                <div style="padding-right:3.5rem;">
-                    <h2 id="smTitle" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:4px;color:white;margin-bottom:0.3rem;"></h2>
-                    <div id="smPriceDisplay" style="color:var(--wheat-gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:2px;"></div>
+                <div class="sm-header-flex">
+                    <div class="sm-header-left">
+                        <h2 id="smTitle" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:2rem;letter-spacing:4px;color:white;margin-bottom:0.3rem;"></h2>
+                        <div id="smPriceDisplay" style="color:var(--wheat-gold);font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:2px;"></div>
+                    </div>
+                    <div id="smRunningTotal" class="sm-running-total">$0.00</div>
                 </div>
             </div>
 
@@ -3265,8 +3323,7 @@
 
             <div class="modal-footer" style="display:flex;gap:1rem;padding:1.5rem 2rem;background:var(--cream);border-radius:0 0 30px 30px;align-items:center;">
                 <button class="cancel-btn" onclick="closeSpecialtyModal()" style="flex:1;">Cancel</button>
-                <div id="smRunningTotal" style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:var(--dark-red);letter-spacing:2px;min-width:100px;text-align:center;">$0.00</div>
-                <button class="add-to-cart-btn" onclick="addSpecialtyToCart()" style="flex:2;">Add to Order 🛒</button>
+                <button class="add-to-cart-btn" onclick="addSpecialtyToCart()" style="flex:1;">Add to Order 🛒</button>
             </div>
         </div>
     </div>
@@ -3938,8 +3995,40 @@
         }
 
         function smUpdateTotal() {
-            const base = smState.basePrice || 0;
-            const total = base + (smState.breadExtra || 0);
+            let total = (smState.basePrice || 0) + (smState.breadExtra || 0);
+            // Protein steppers
+            if (smState.steppers && smState.steppers.protein) {
+                Object.entries(smState.steppers.protein).forEach(([name, val]) => {
+                    if (!val) return;
+                    const item = SM_PROTEINS.find(i => i.name === name);
+                    if (item) total += val === 1 ? item.halfPrice : item.fullPrice;
+                });
+            }
+            // Veggie steppers
+            if (smState.steppers && smState.steppers.veggie) {
+                Object.entries(smState.steppers.veggie).forEach(([name, val]) => {
+                    if (!val) return;
+                    const item = SM_VEGGIES.find(i => i.name === name);
+                    if (item) total += val === 1 ? item.halfPrice : item.fullPrice;
+                });
+            }
+            // Cheese steppers
+            if (smState.steppers && smState.steppers.cheese) {
+                Object.entries(smState.steppers.cheese).forEach(([name, val]) => {
+                    if (!val) return;
+                    const item = SM_CHEESES.find(i => i.name === name);
+                    if (item) total += val * item.slicePrice;
+                });
+            }
+            // Simple addons (Egg)
+            if (smState.simpleAddons) {
+                Object.entries(smState.simpleAddons).forEach(([name, on]) => {
+                    if (!on) return;
+                    const item = SM_PROTEIN_SIMPLE.find(i => i.name === name);
+                    if (item) total += item.price;
+                });
+            }
+            if (smState.wrapping) total += 1.00;
             document.getElementById('smRunningTotal').textContent = `$${total.toFixed(2)}`;
         }
 
@@ -4407,6 +4496,9 @@
             if (buildYourOwnOrder.veggies.length > 0) detailsHTML += `<p>Veggies (${buildYourOwnOrder.veggies.length}): ${buildYourOwnOrder.veggies.join(', ')}</p>`;
             if (buildYourOwnOrder.seasonings.length > 0) detailsHTML += `<p>Seasonings: ${buildYourOwnOrder.seasonings.join(', ')}</p>`;
             if (buildYourOwnOrder.additions.length > 0) detailsHTML += `<p>Additions: ${buildYourOwnOrder.additions.map(a => a.name).join(', ')}</p>`;
+            
+            const specialNote = document.getElementById('byoSpecialRequest').value.trim();
+            if (specialNote) detailsHTML += `<p>Note: ${specialNote}</p>`;
             
             console.log('Build-Your-Own Order:', buildYourOwnOrder);
             showSuccessToast('Added to Cart!', 'Your custom sandwich is ready to order', detailsHTML, `$${total.toFixed(2)}`);
