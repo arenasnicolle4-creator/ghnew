@@ -1348,16 +1348,22 @@
 
             /* Swap to short text on mobile */
             .accordion-full {
-                display: none;
+                display: none !important;
             }
 
             .accordion-short {
-                display: inline;
+                display: inline !important;
             }
 
             /* Hide counts on mobile */
             .accordion-count {
                 display: none;
+            }
+
+            /* Center sandwich accordion titles (div.accordion-title) on mobile */
+            div.accordion-title {
+                flex: 1;
+                justify-content: center;
             }
 
             .nav-links {
