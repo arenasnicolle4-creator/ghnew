@@ -1322,6 +1322,7 @@
             /* Compact accordions on mobile */
             .accordion-header {
                 padding: 0.9rem 1.2rem;
+                justify-content: center;
             }
 
             .accordion-emoji {
@@ -1335,10 +1336,14 @@
 
             .accordion-title-wrapper {
                 gap: 0.6rem;
+                flex: 1;
+                justify-content: center;
             }
 
             .accordion-icon {
                 font-size: 1.3rem;
+                position: absolute;
+                right: 1.2rem;
             }
 
             /* Swap to short text on mobile */
@@ -2554,6 +2559,7 @@
             transition: all 0.3s ease;
             margin-bottom: 0.5rem;
             width: 100%;
+            position: relative;
         }
         .accordion-header:hover {
             transform: translateY(-2px);
