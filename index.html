@@ -1319,6 +1319,42 @@
                 flex-direction: column;
             }
 
+            /* Compact accordions on mobile */
+            .accordion-header {
+                padding: 0.9rem 1.2rem;
+            }
+
+            .accordion-emoji {
+                font-size: 1.6rem;
+            }
+
+            .accordion-title {
+                font-size: 1.1rem;
+                letter-spacing: 1px;
+            }
+
+            .accordion-title-wrapper {
+                gap: 0.6rem;
+            }
+
+            .accordion-icon {
+                font-size: 1.3rem;
+            }
+
+            /* Swap to short text on mobile */
+            .accordion-full {
+                display: none;
+            }
+
+            .accordion-short {
+                display: inline;
+            }
+
+            /* Hide counts on mobile */
+            .accordion-count {
+                display: none;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -2510,7 +2546,7 @@
             background: linear-gradient(135deg, rgba(74,78,142,0.1), rgba(139,26,26,0.08));
             border: 2px solid rgba(74,78,142,0.2);
             border-radius: 15px;
-            padding: 1.5rem 2rem;
+            padding: 1.2rem 1.8rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
@@ -2527,17 +2563,17 @@
         .accordion-title-wrapper {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.8rem;
         }
         .accordion-emoji {
-            font-size: 2.5rem;
+            font-size: 2rem;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         .accordion-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-weight: 400;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
             background: linear-gradient(135deg, var(--purple-blue), var(--dark-red));
             -webkit-background-clip: text;
@@ -2546,13 +2582,19 @@
         }
         .accordion-count {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--purple-blue);
             font-weight: 600;
             opacity: 0.8;
         }
+        .accordion-short {
+            display: none;
+        }
+        .accordion-full {
+            display: inline;
+        }
         .accordion-icon {
-            font-size: 2rem;
+            font-size: 1.5rem;
             transition: transform 0.3s ease;
             color: var(--purple-blue);
         }
@@ -2625,7 +2667,7 @@
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <div class="accordion-title-wrapper">
                     <span class="accordion-emoji">🍞</span>
-                    <span class="accordion-title">Daily Breads</span>
+                    <span class="accordion-title"><span class="accordion-full">Daily Breads</span><span class="accordion-short">Breads</span></span>
                     <span class="accordion-count">(8 options)</span>
                 </div>
                 <span class="accordion-icon">▼</span>
@@ -2690,7 +2732,7 @@
             <button class="accordion-header" onclick="toggleAccordion(this)" style="margin-top: 2rem;">
                 <div class="accordion-title-wrapper">
                     <span class="accordion-emoji">🧁</span>
-                    <span class="accordion-title">Daily Sweet Treats</span>
+                    <span class="accordion-title"><span class="accordion-full">Daily Sweet Treats</span><span class="accordion-short">Sweet Treats</span></span>
                     <span class="accordion-count">(4 options)</span>
                 </div>
                 <span class="accordion-icon">▼</span>
@@ -2734,7 +2776,7 @@
             <button class="accordion-header" onclick="toggleAccordion(this)">
                 <div class="accordion-title-wrapper">
                     <span class="accordion-emoji">🥖</span>
-                    <span class="accordion-title">Specialty Breads</span>
+                    <span class="accordion-title"><span class="accordion-full">Specialty Breads</span><span class="accordion-short">Breads</span></span>
                     <span class="accordion-count" id="specialtyBreadsCount"></span>
                 </div>
                 <span class="accordion-icon">▼</span>
@@ -2747,7 +2789,7 @@
             <button class="accordion-header" onclick="toggleAccordion(this)" style="margin-top: 2rem;">
                 <div class="accordion-title-wrapper">
                     <span class="accordion-emoji">🍰</span>
-                    <span class="accordion-title">Specialty Sweets</span>
+                    <span class="accordion-title"><span class="accordion-full">Specialty Sweets</span><span class="accordion-short">Sweet Treats</span></span>
                     <span class="accordion-count" id="specialtySweetsCount"></span>
                 </div>
                 <span class="accordion-icon">▼</span>
@@ -3528,11 +3570,14 @@
                 // Make header text white for dark background
                 document.getElementById('breadsSectionHeader').style.color = 'white';
                 
-                // Scroll to section on mobile
+                // Scroll to title on mobile to make it obvious the tab switched
                 if (window.innerWidth <= 768) {
                     setTimeout(() => {
-                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
+                        const title = document.getElementById('todayTitle');
+                        if (title) {
+                            title.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                    }, 200);
                 }
             } else {
                 // Daily favorites
@@ -4742,10 +4787,13 @@
             
             if (!todayMenu) return;
 
-            // Set title
-            document.getElementById('todayTitle').textContent = today === 'Sunday' 
-                ? "SPECIALTY ITEMS (Saturday's Menu - We're Closed Sunday)" 
-                : `TODAY'S SPECIALTY - ${today.toUpperCase()}`;
+            // Set title with bolded day
+            const titleElement = document.getElementById('todayTitle');
+            if (today === 'Sunday') {
+                titleElement.innerHTML = "SPECIALTY ITEMS (<strong>Saturday</strong>'s Menu - We're Closed Sunday)";
+            } else {
+                titleElement.innerHTML = `TODAY'S SPECIALTY - <strong>${today.toUpperCase()}</strong>`;
+            }
 
             // Populate Specialty Breads
             const breadsGrid = document.getElementById('specialtyBreadsGrid');
