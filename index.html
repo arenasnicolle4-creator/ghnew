@@ -1209,11 +1209,21 @@
         }
 
         .modal-footer {
+            display: flex;
+            gap: 1rem;
             padding: 2rem;
             background: var(--cream);
             border-radius: 0 0 30px 30px;
             position: sticky;
             bottom: 0;
+        }
+
+        .modal-footer .cancel-btn {
+            flex: 1;
+        }
+
+        .modal-footer .add-to-cart-btn {
+            flex: 2;
         }
 
         .add-to-cart-btn {
@@ -1464,6 +1474,33 @@
                 padding: 0.4rem 0.7rem;
             }
 
+            /* Compact bread cards on mobile */
+            .bread-card {
+                padding: 0.8rem;
+            }
+
+            .bread-card-icon {
+                font-size: 2rem;
+            }
+
+            .bread-card h3 {
+                font-size: 0.95rem;
+            }
+
+            /* Compact custom options on mobile */
+            .custom-option {
+                padding: 0.8rem;
+            }
+
+            .option-icon {
+                font-size: 2rem;
+                margin-bottom: 0.3rem;
+            }
+
+            .option-name {
+                font-size: 0.85rem;
+            }
+
             /* Compact BYO header */
             .byo-header {
                 padding: 1rem 1rem 0.8rem;
@@ -1589,6 +1626,7 @@
         .modal-footer .add-to-cart-btn {
             flex: 2;
         }
+
 
     
         /* Grid layout for small square options */
@@ -2479,11 +2517,21 @@
             align-items: center;
             transition: all 0.3s ease;
             margin-bottom: 0.5rem;
+            width: 100%;
         }
         .accordion-header:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(74,78,142,0.2);
             border-color: var(--purple-blue);
+        }
+        .accordion-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .accordion-emoji {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
         .accordion-title {
             font-family: 'Cormorant Garamond', serif;
@@ -2494,9 +2542,14 @@
             background: linear-gradient(135deg, var(--purple-blue), var(--dark-red));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+            background-clip: text;
+        }
+        .accordion-count {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--purple-blue);
+            font-weight: 600;
+            opacity: 0.8;
         }
         .accordion-icon {
             font-size: 2rem;
@@ -2568,87 +2621,107 @@
 
         <!-- Daily Tab -->
         <div class="tab-content active" id="daily-tab">
-            <div class="daily-grid">
-                <!-- Daily Breads -->
-                <div class="bread-card" onclick="addBreadToOrder('Honey Whole Wheat', 6.50, true)">
-                    <span class="bread-card-icon">🌾</span>
-                    <h3>Honey Whole Wheat</h3>
-                    <span class="bread-badge">100% Whole Grain</span>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
-                    <button class="add-order-btn">Add to Order</button>
+            <!-- Daily Breads Accordion -->
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title-wrapper">
+                    <span class="accordion-emoji">🍞</span>
+                    <span class="accordion-title">Daily Breads</span>
+                    <span class="accordion-count">(8 options)</span>
                 </div>
-                <div class="bread-card" onclick="addBreadToOrder('Honey White', 6.50, false)">
-                    <span class="bread-card-icon">🥖</span>
-                    <h3>Honey White</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Cinnamon Chip', 7.50, false)">
-                    <span class="bread-card-icon">🍫</span>
-                    <h3>Cinnamon Chip</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Cinnamon Swirl', 7.50, false)">
-                    <span class="bread-card-icon">🌀</span>
-                    <h3>Cinnamon Swirl</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Chugach Rustic', 7.00, false)">
-                    <span class="bread-card-icon">🏔️</span>
-                    <h3>Chugach Rustic</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Multigrain Rustic', 7.00, false)">
-                    <span class="bread-card-icon">🌰</span>
-                    <h3>Multigrain Rustic</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Cranberry Walnut Rustic', 8.00, false)">
-                    <span class="bread-card-icon">🍒</span>
-                    <h3>Cranberry Walnut Rustic</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.00</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addBreadToOrder('Fresh Rolls (6-pack)', 5.50, false)">
-                    <span class="bread-card-icon">🧺</span>
-                    <h3>Fresh Rolls</h3>
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Honey Whole Wheat & Honey White (6-pack)</p>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$5.50</div>
-                    <button class="add-order-btn">Add to Order</button>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="daily-grid">
+                    <!-- Daily Breads -->
+                    <div class="bread-card" onclick="addBreadToOrder('Honey Whole Wheat', 6.50, true)">
+                        <span class="bread-card-icon">🌾</span>
+                        <h3>Honey Whole Wheat</h3>
+                        <span class="bread-badge">100% Whole Grain</span>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Honey White', 6.50, false)">
+                        <span class="bread-card-icon">🥖</span>
+                        <h3>Honey White</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$6.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Cinnamon Chip', 7.50, false)">
+                        <span class="bread-card-icon">🍫</span>
+                        <h3>Cinnamon Chip</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Cinnamon Swirl', 7.50, false)">
+                        <span class="bread-card-icon">🌀</span>
+                        <h3>Cinnamon Swirl</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Chugach Rustic', 7.00, false)">
+                        <span class="bread-card-icon">🏔️</span>
+                        <h3>Chugach Rustic</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Multigrain Rustic', 7.00, false)">
+                        <span class="bread-card-icon">🌰</span>
+                        <h3>Multigrain Rustic</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$7.00</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Cranberry Walnut Rustic', 8.00, false)">
+                        <span class="bread-card-icon">🍒</span>
+                        <h3>Cranberry Walnut Rustic</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.00</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addBreadToOrder('Fresh Rolls (6-pack)', 5.50, false)">
+                        <span class="bread-card-icon">🧺</span>
+                        <h3>Fresh Rolls</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Honey Whole Wheat & Honey White (6-pack)</p>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$5.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
                 </div>
             </div>
 
-            <h3 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--dark-red); margin: 3rem 0 2rem; letter-spacing: 5px; text-transform: uppercase;">Daily Sweet Treats</h3>
-            
-            <div class="daily-grid">
-                <div class="bread-card" onclick="addItemToOrder('Chocolate Chip Oatmeal Cookies', 8.50)">
-                    <span class="bread-card-icon">🍪</span>
-                    <h3>Chocolate Chip Oatmeal Cookies</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.50</div>
-                    <button class="add-order-btn">Add to Order</button>
+            <!-- Daily Sweet Treats Accordion -->
+            <button class="accordion-header" onclick="toggleAccordion(this)" style="margin-top: 2rem;">
+                <div class="accordion-title-wrapper">
+                    <span class="accordion-emoji">🧁</span>
+                    <span class="accordion-title">Daily Sweet Treats</span>
+                    <span class="accordion-count">(4 options)</span>
                 </div>
-                <div class="bread-card" onclick="addItemToOrder('Baker\'s Choice Scones', 3.50)">
-                    <span class="bread-card-icon">🥐</span>
-                    <h3>Baker's Choice Scones</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$3.50</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addItemToOrder('Ham and Cheese Rolls', 4.50)">
-                    <span class="bread-card-icon">🥪</span>
-                    <h3>Ham and Cheese Rolls</h3>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.50</div>
-                    <button class="add-order-btn">Add to Order</button>
-                </div>
-                <div class="bread-card" onclick="addItemToOrder('Cinnamon Rolls', 4.00)">
-                    <span class="bread-card-icon">🌀</span>
-                    <h3>Cinnamon Rolls</h3>
-                    <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Plain & Walnut-Raisin</p>
-                    <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.00</div>
-                    <button class="add-order-btn">Add to Order</button>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="daily-grid">
+                    <div class="bread-card" onclick="addItemToOrder('Chocolate Chip Oatmeal Cookies', 8.50)">
+                        <span class="bread-card-icon">🍪</span>
+                        <h3>Chocolate Chip Oatmeal Cookies</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$8.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addItemToOrder('Baker\'s Choice Scones', 3.50)">
+                        <span class="bread-card-icon">🥐</span>
+                        <h3>Baker's Choice Scones</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$3.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addItemToOrder('Ham and Cheese Rolls', 4.50)">
+                        <span class="bread-card-icon">🥪</span>
+                        <h3>Ham and Cheese Rolls</h3>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.50</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
+                    <div class="bread-card" onclick="addItemToOrder('Cinnamon Rolls', 4.00)">
+                        <span class="bread-card-icon">🌀</span>
+                        <h3>Cinnamon Rolls</h3>
+                        <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Plain & Walnut-Raisin</p>
+                        <div class="price" style="margin-top: 1rem; font-size: 1.3rem; color: var(--dark-red); font-weight: 700;">$4.00</div>
+                        <button class="add-order-btn">Add to Order</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2657,13 +2730,31 @@
         <div class="tab-content" id="specialty-tab">
             <h3 id="todayTitle" style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.8rem; color: var(--dark-red); margin-bottom: 3rem; letter-spacing: 5px; text-transform: uppercase;"></h3>
             
-            <!-- Specialty Breads for Today -->
-            <h4 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--purple-blue); margin-bottom: 2rem; letter-spacing: 5px; text-transform: uppercase;">Specialty Breads</h4>
-            <div class="daily-grid" id="specialtyBreadsGrid"></div>
+            <!-- Specialty Breads Accordion -->
+            <button class="accordion-header" onclick="toggleAccordion(this)">
+                <div class="accordion-title-wrapper">
+                    <span class="accordion-emoji">🥖</span>
+                    <span class="accordion-title">Specialty Breads</span>
+                    <span class="accordion-count" id="specialtyBreadsCount"></span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="daily-grid" id="specialtyBreadsGrid"></div>
+            </div>
 
-            <!-- Specialty Sweets for Today -->
-            <h4 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; font-size: 1.4rem; color: var(--purple-blue); margin: 4rem 0 2rem; letter-spacing: 5px; text-transform: uppercase;">Specialty Sweets</h4>
-            <div class="daily-grid" id="specialtySweetsGrid"></div>
+            <!-- Specialty Sweets Accordion -->
+            <button class="accordion-header" onclick="toggleAccordion(this)" style="margin-top: 2rem;">
+                <div class="accordion-title-wrapper">
+                    <span class="accordion-emoji">🍰</span>
+                    <span class="accordion-title">Specialty Sweets</span>
+                    <span class="accordion-count" id="specialtySweetsCount"></span>
+                </div>
+                <span class="accordion-icon">▼</span>
+            </button>
+            <div class="accordion-content">
+                <div class="daily-grid" id="specialtySweetsGrid"></div>
+            </div>
         </div>
 
         <!-- Our Sandwiches Tab -->
@@ -3436,6 +3527,13 @@
                 section.classList.add('specialty-active');
                 // Make header text white for dark background
                 document.getElementById('breadsSectionHeader').style.color = 'white';
+                
+                // Scroll to section on mobile
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                }
             } else {
                 // Daily favorites
                 header.style.display = 'block';
@@ -4033,6 +4131,32 @@
         }
 
         // ── Success Toast ──────────────────────────────────────────────────
+        function showValidationError(message) {
+            const overlay = document.getElementById('toastOverlay');
+            const toast = document.getElementById('successToast');
+            const iconEl = toast.querySelector('.success-icon');
+            const titleEl = toast.querySelector('h3');
+            const msgEl = document.getElementById('toastMessage');
+            const detailsEl = document.getElementById('toastDetails');
+            
+            // Change styling for error
+            iconEl.textContent = '⚠️';
+            iconEl.style.background = 'linear-gradient(135deg, #ff6b6b, #c92a2a)';
+            titleEl.textContent = 'Missing Selection';
+            msgEl.textContent = message;
+            detailsEl.innerHTML = '';
+            
+            overlay.classList.add('show');
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                hideSuccessToast();
+                // Reset to success styling
+                iconEl.textContent = '✓';
+                iconEl.style.background = 'linear-gradient(135deg, var(--wheat-gold), var(--dark-red))';
+            }, 2500);
+        }
+
         function showSuccessToast(title, message, details, total) {
             console.log('showSuccessToast called:', { title, message, details, total });
             const overlay = document.getElementById('toastOverlay');
@@ -4068,8 +4192,14 @@
         function addSpecialtyToCart() {
             console.log('addSpecialtyToCart called');
             const sd = SM_DATA[smState.key];
-            if (!smState.size && sd.half !== null) { alert('Please choose a size — Half or Whole.'); return; }
-            if (!smState.bread) { alert('Please choose a bread.'); return; }
+            if (!smState.size && sd.half !== null) { 
+                showValidationError('Please choose a size — Half or Whole'); 
+                return; 
+            }
+            if (!smState.bread) { 
+                showValidationError('Please choose a bread'); 
+                return; 
+            }
             let total = (smState.basePrice || 0) + (smState.breadExtra || 0);
             let addLines = [];
             if (smState.steppers && smState.steppers.protein) Object.entries(smState.steppers.protein).forEach(([name,val]) => {
@@ -4429,19 +4559,19 @@
         function addBuildYourOwnToCart() {
             // Validate required fields
             if (!buildYourOwnOrder.size) {
-                alert('Please select a size (Half or Whole)');
+                showValidationError('Please select a size (Half or Whole)');
                 return;
             }
             if (!buildYourOwnOrder.bread) {
-                alert('Please select a bread');
+                showValidationError('Please select a bread');
                 return;
             }
             if (!buildYourOwnOrder.proteins || Object.keys(buildYourOwnOrder.proteins).length === 0) {
-                alert('Please select at least one meat/hummus');
+                showValidationError('Please select at least one meat/hummus');
                 return;
             }
             if (!buildYourOwnOrder.cheeses || Object.keys(buildYourOwnOrder.cheeses).length === 0) {
-                alert('Please select at least one cheese');
+                showValidationError('Please select at least one cheese');
                 return;
             }
             
@@ -4633,6 +4763,9 @@
                     </div>
                 `;
             });
+            
+            // Update bread count
+            document.getElementById('specialtyBreadsCount').textContent = `(${todayMenu.breads.length} option${todayMenu.breads.length !== 1 ? 's' : ''})`;
 
             // Populate Specialty Sweets
             const sweetsGrid = document.getElementById('specialtySweetsGrid');
@@ -4649,6 +4782,9 @@
                     </div>
                 `;
             });
+            
+            // Update sweets count
+            document.getElementById('specialtySweetsCount').textContent = `(${todayMenu.sweets.length} option${todayMenu.sweets.length !== 1 ? 's' : ''})`;
         }
 
         // Load specialty items when page loads
