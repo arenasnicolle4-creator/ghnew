@@ -50,22 +50,15 @@
         }
 
         .logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 300;
-            color: var(--dark-red);
-            letter-spacing: 4px;
-            text-transform: uppercase;
             position: relative;
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
 
-        .logo::before {
-            content: '';
-            font-size: 1.8rem;
-            animation: sway 3s ease-in-out infinite;
+        .logo-img {
+            height: 50px;
+            width: auto;
         }
 
         @keyframes sway {
@@ -2863,7 +2856,7 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="logo">Great Harvest Bread Co.</div>
+        <div class="logo"><img src="gh-logo.png" alt="Great Harvest Bread Co." class="logo-img"></div>
         
         <div class="nav-right">
             <button class="order-btn" onclick="openQuickOrderMenu()">Order</button>
@@ -2914,8 +2907,8 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>
-                <span class="line-one">Artisan Bread</span>
-                <span class="line-two">& Baked Fresh</span>
+                <span class="line-one">Great Harvest</span>
+                <span class="line-two">Bread Co.</span>
             </h1>
             <div class="hero-divider"></div>
             <p>Handcrafted daily in Anchorage, Alaska</p>
