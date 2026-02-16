@@ -1366,6 +1366,41 @@
                 justify-content: center;
             }
 
+            /* Mobile butter and sweet treat modal fixes */
+            .butter-modal {
+                padding: 1rem;
+            }
+
+            .butter-modal-content {
+                padding: 1.5rem;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            .butter-modal h2 {
+                font-size: 1.5rem;
+            }
+
+            .butter-options {
+                grid-template-columns: 1fr;
+                gap: 0.8rem;
+                margin: 1.5rem 0;
+            }
+
+            .butter-option {
+                padding: 1rem;
+            }
+
+            .butter-modal-buttons {
+                gap: 0.8rem;
+            }
+
+            .skip-butter-btn,
+            .confirm-butter-btn {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+
             .nav-links {
                 display: none;
             }
@@ -2676,9 +2711,11 @@
         </div>
 
         <!-- Title for Breads/Specialty ONLY -->
-        <div id="breadsSectionHeader" style="display: none;">
-            <h2 class="breads-title">FRESH BAKED DAILY</h2>
-            <p class="breads-subtitle">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
+        <div id="breadsSectionHeader">
+            <div style="text-align: center; padding: 1.5rem; background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(139,26,26,0.05)); border-radius: 15px; border: 2px solid rgba(212,165,116,0.3); margin-bottom: 2rem;">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark-red); margin-bottom: 0.5rem; letter-spacing: 2px;">🔥 FRESH BAKED DAILY</p>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--soft-black);">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
+            </div>
         </div>
 
         <!-- Daily Tab -->
@@ -2786,12 +2823,6 @@
                     </div>
                 </div>
             </div>
-            
-            <!-- Fresh Baked Daily Notice -->
-            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(139,26,26,0.05)); border-radius: 15px; border: 2px solid rgba(212,165,116,0.3);">
-                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark-red); margin-bottom: 0.5rem; letter-spacing: 2px;">🔥 FRESH BAKED DAILY</p>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--soft-black);">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
-            </div>
         </div>
 
         <!-- Specialty Tab - Today's Items Only -->
@@ -2822,12 +2853,6 @@
             </button>
             <div class="accordion-content">
                 <div class="daily-grid" id="specialtySweetsGrid"></div>
-            </div>
-            
-            <!-- Fresh Baked Daily Notice -->
-            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(139,26,26,0.05)); border-radius: 15px; border: 2px solid rgba(212,165,116,0.3);">
-                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark-red); margin-bottom: 0.5rem; letter-spacing: 2px;">🔥 FRESH BAKED DAILY</p>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--soft-black);">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
             </div>
         </div>
 
@@ -3518,8 +3543,22 @@
             </div>
 
             <div class="butter-modal-buttons">
-                <button class="skip-butter-btn" onclick="skipButter()">No Thanks</button>
+                <button class="skip-butter-btn" onclick="cancelButter()">Cancel</button>
                 <button class="confirm-butter-btn" onclick="confirmButter()">Add to Order</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sweet Treat Confirmation Modal -->
+    <div class="butter-modal" id="sweetTreatModal">
+        <div class="butter-modal-content">
+            <h2 id="sweetTreatName">🍪 Sweet Treat</h2>
+            <p style="color: #666; margin-bottom: 1rem;">Add this item to your order?</p>
+            <div id="sweetTreatPrice" style="font-size: 2rem; font-weight: 700; color: var(--dark-red); text-align: center; margin: 2rem 0;">$0.00</div>
+
+            <div class="butter-modal-buttons">
+                <button class="skip-butter-btn" onclick="cancelSweetTreat()">Cancel</button>
+                <button class="confirm-butter-btn" onclick="confirmSweetTreat()">Add to Order</button>
             </div>
         </div>
     </div>
@@ -3592,26 +3631,30 @@
             // Remove all tab-specific classes
             section.classList.remove('daily-active', 'specialty-active', 'sandwiches-active');
             
-            // Keep header hidden (Fresh Baked Daily is now in footer of each tab)
-            header.style.display = 'none';
-            
             if (tabName === 'sandwiches') {
+                header.style.display = 'none';
                 section.classList.add('sandwiches-active');
             } else if (tabName === 'specialty') {
+                header.style.display = 'block';
                 section.classList.add('specialty-active');
                 
-                // Scroll to title on mobile to make it obvious the tab switched
+                // Scroll to header on mobile to show Fresh Baked Daily and make tab switch obvious
                 if (window.innerWidth <= 768) {
                     setTimeout(() => {
-                        const title = document.getElementById('todayTitle');
-                        if (title) {
-                            title.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
+                        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }, 200);
                 }
             } else {
                 // Daily favorites
+                header.style.display = 'block';
                 section.classList.add('daily-active');
+                
+                // Scroll to header on mobile to show Fresh Baked Daily and make tab switch obvious
+                if (window.innerWidth <= 768) {
+                    setTimeout(() => {
+                        header.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 200);
+                }
             }
         }
 
@@ -3645,16 +3688,17 @@
             currentBreadOrder.butter = butterName;
         }
 
-        function skipButter() {
+        function cancelButter() {
+            // Close modal without adding
+            document.getElementById('butterModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            // Reset selections
+            document.querySelectorAll('.butter-option').forEach(opt => opt.classList.remove('selected'));
             currentBreadOrder.butter = null;
-            finalizeBreadOrder();
         }
 
         function confirmButter() {
-            if (!currentBreadOrder.butter) {
-                alert('Please select a butter or click "No Thanks"');
-                return;
-            }
+            // Butter is optional - if none selected, butter is null and that's okay
             finalizeBreadOrder();
         }
 
@@ -3663,15 +3707,12 @@
                 ? currentBreadOrder.price + currentBreadOrder.butterPrice 
                 : currentBreadOrder.price;
             
-            const orderSummary = currentBreadOrder.butter
-                ? `${currentBreadOrder.name} + ${currentBreadOrder.butter} Butter - $${totalPrice.toFixed(2)}`
-                : `${currentBreadOrder.name} - $${totalPrice.toFixed(2)}`;
+            const butterLine = currentBreadOrder.butter ? `<p>Add: ${currentBreadOrder.butter} Butter +$${currentBreadOrder.butterPrice.toFixed(2)}</p>` : '';
             
-            // Here you would integrate with Square API
-            console.log('Order placed:', orderSummary);
+            let detailsHTML = `<p><strong>${currentBreadOrder.name}</strong></p>${butterLine}`;
             
-            // Visual feedback
-            alert(`✓ Added to cart!\n\n${orderSummary}\n\nIn production, this will sync with Square POS.`);
+            // Show success toast
+            showSuccessToast('Added to Cart!', 'Your bread order is ready', detailsHTML, `$${totalPrice.toFixed(2)}`);
             
             // Close modal
             document.getElementById('butterModal').classList.remove('active');
@@ -3685,13 +3726,32 @@
         }
 
         // Add regular items (sweets) to order
+        let currentSweetTreatOrder = { name: '', price: 0 };
+
         function addItemToOrder(itemName, price) {
             event.stopPropagation();
             
-            // Here you would integrate with Square API
-            console.log('Order placed:', {name: itemName, price: price});
+            currentSweetTreatOrder.name = itemName;
+            currentSweetTreatOrder.price = price;
             
-            alert(`✓ Added to cart!\n\n${itemName} - $${price.toFixed(2)}\n\nIn production, this will sync with Square POS.`);
+            // Show confirmation modal
+            document.getElementById('sweetTreatName').textContent = `${itemName}`;
+            document.getElementById('sweetTreatPrice').textContent = `$${price.toFixed(2)}`;
+            document.getElementById('sweetTreatModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function cancelSweetTreat() {
+            document.getElementById('sweetTreatModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function confirmSweetTreat() {
+            let detailsHTML = `<p><strong>${currentSweetTreatOrder.name}</strong></p>`;
+            showSuccessToast('Added to Cart!', 'Your sweet treat is ready', detailsHTML, `$${currentSweetTreatOrder.price.toFixed(2)}`);
+            
+            document.getElementById('sweetTreatModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
 
         // Add sandwich to order with half/whole selection
@@ -4808,8 +4868,8 @@
             const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
             const today = days[new Date().getDay()];
             
-            // Sunday - show message that they're closed or show Saturday's items
-            const dayToShow = today === 'Sunday' ? 'Saturday' : today;
+            // Sunday - show Monday's items since we're closed Sunday
+            const dayToShow = today === 'Sunday' ? 'Monday' : today;
             const todayMenu = specialtyMenu[dayToShow];
             
             if (!todayMenu) return;
@@ -4817,7 +4877,7 @@
             // Set title with bolded day
             const titleElement = document.getElementById('todayTitle');
             if (today === 'Sunday') {
-                titleElement.innerHTML = "SPECIALTY ITEMS (<strong>Saturday</strong>'s Menu - We're Closed Sunday)";
+                titleElement.innerHTML = "SPECIALTY ITEMS (<strong>Monday</strong>'s Menu - We're Closed Sunday)";
             } else {
                 titleElement.innerHTML = `TODAY'S SPECIALTY - <strong>${today.toUpperCase()}</strong>`;
             }
