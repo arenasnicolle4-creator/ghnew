@@ -2676,7 +2676,7 @@
         </div>
 
         <!-- Title for Breads/Specialty ONLY -->
-        <div id="breadsSectionHeader">
+        <div id="breadsSectionHeader" style="display: none;">
             <h2 class="breads-title">FRESH BAKED DAILY</h2>
             <p class="breads-subtitle">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
         </div>
@@ -2786,6 +2786,12 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Fresh Baked Daily Notice -->
+            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(139,26,26,0.05)); border-radius: 15px; border: 2px solid rgba(212,165,116,0.3);">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark-red); margin-bottom: 0.5rem; letter-spacing: 2px;">🔥 FRESH BAKED DAILY</p>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--soft-black);">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
+            </div>
         </div>
 
         <!-- Specialty Tab - Today's Items Only -->
@@ -2817,12 +2823,18 @@
             <div class="accordion-content">
                 <div class="daily-grid" id="specialtySweetsGrid"></div>
             </div>
+            
+            <!-- Fresh Baked Daily Notice -->
+            <div style="text-align: center; margin-top: 3rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(212,165,116,0.1), rgba(139,26,26,0.05)); border-radius: 15px; border: 2px solid rgba(212,165,116,0.3);">
+                <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--dark-red); margin-bottom: 0.5rem; letter-spacing: 2px;">🔥 FRESH BAKED DAILY</p>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; color: var(--soft-black);">Hot breads pulled from the oven between 9:30 AM and 1:00 PM daily</p>
+            </div>
         </div>
 
         <!-- Our Sandwiches Tab -->
         <div class="tab-content" id="sandwiches-tab">
             <!-- Build Your Own Section -->
-            <h3 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 4px; font-size: 2.5rem; margin-bottom: 1rem; background: linear-gradient(135deg, #FF6B35, #F7931E); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; display: inline-block; width: 100%;">BUILD-YOUR-OWN SANDWICH</h3>
+            <h3 style="text-align: center; font-family: 'Cormorant Garamond', serif; font-weight: 300; letter-spacing: 3px; font-size: 2rem; margin-bottom: 1rem; color: var(--dark-red);">BUILD-YOUR-OWN SANDWICH</h3>
             <p style="text-align: center; font-size: 1.1rem; color: var(--soft-black); margin-bottom: 3rem;">Half $10.25 | Whole $14.25</p>
             
             <div class="menu-item" onclick="openBuildYourOwn(event)" style="max-width: 800px; margin: 0 auto 4rem; background: linear-gradient(135deg, rgba(212, 165, 116, 0.15), rgba(139, 26, 26, 0.1)); cursor: pointer;">
@@ -3580,15 +3592,13 @@
             // Remove all tab-specific classes
             section.classList.remove('daily-active', 'specialty-active', 'sandwiches-active');
             
+            // Keep header hidden (Fresh Baked Daily is now in footer of each tab)
+            header.style.display = 'none';
+            
             if (tabName === 'sandwiches') {
-                header.style.display = 'none';
                 section.classList.add('sandwiches-active');
-                // Header text doesn't need to change (hidden)
             } else if (tabName === 'specialty') {
-                header.style.display = 'block';
                 section.classList.add('specialty-active');
-                // Make header text white for dark background
-                document.getElementById('breadsSectionHeader').style.color = 'white';
                 
                 // Scroll to title on mobile to make it obvious the tab switched
                 if (window.innerWidth <= 768) {
@@ -3601,10 +3611,7 @@
                 }
             } else {
                 // Daily favorites
-                header.style.display = 'block';
                 section.classList.add('daily-active');
-                // Reset header text color
-                document.getElementById('breadsSectionHeader').style.color = '';
             }
         }
 
