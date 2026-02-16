@@ -74,9 +74,29 @@
         }
 
         .nav-links {
-            display: flex;
-            gap: 3rem;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: white;
+            flex-direction: column;
+            gap: 0;
+            padding: 0;
             list-style: none;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+
+        .nav-links.active {
+            max-height: 300px;
+        }
+
+        .nav-links li {
+            width: 100%;
+            border-bottom: 1px solid rgba(212,165,116,0.2);
         }
 
         .nav-links a {
@@ -87,29 +107,18 @@
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             position: relative;
-            padding: 0.5rem 0;
+            padding: 1.2rem 5%;
+            display: block;
+            text-align: left;
         }
 
         .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--dark-red);
-            transition: width 0.3s ease;
-            border-radius: 2px;
+            display: none;
         }
 
         .nav-links a:hover {
             color: var(--dark-red);
-            transform: translateY(-2px);
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+            background: rgba(212,165,116,0.1);
         }
 
         .order-btn {
@@ -119,7 +128,7 @@
             border-radius: 50px;
             border: none;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(139, 26, 26, 0.3);
             font-size: 0.85rem;
@@ -128,6 +137,9 @@
             position: relative;
             overflow: hidden;
             font-family: 'Montserrat', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .order-btn::before {
@@ -153,14 +165,16 @@
             box-shadow: 0 8px 25px rgba(139, 26, 26, 0.4);
         }
 
-        .order-btn span {
-            position: relative;
-            z-index: 1;
+        /* Nav Right Container */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         /* Mobile Menu Toggle */
         .mobile-menu-toggle {
-            display: none;
+            display: flex;
             flex-direction: column;
             gap: 5px;
             background: none;
@@ -429,7 +443,7 @@
             border-radius: 50px;
             border: none;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             font-size: 0.95rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
@@ -1458,45 +1472,7 @@
                 flex-direction: column;
             }
 
-            /* Mobile Navigation */
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 70px;
-                left: 0;
-                width: 100%;
-                background: white;
-                flex-direction: column;
-                gap: 0;
-                padding: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s ease;
-                box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            }
-
-            .nav-links.active {
-                max-height: 300px;
-            }
-
-            .nav-links li {
-                width: 100%;
-                border-bottom: 1px solid rgba(212,165,116,0.2);
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 1.2rem 5%;
-                text-align: left;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
+            /* Mobile-specific button adjustments */
             .order-btn {
                 padding: 0.7rem 1.5rem;
                 font-size: 0.9rem;
@@ -2888,21 +2864,24 @@
     <nav>
         <div class="logo">Great Harvest Bread Co.</div>
         
-        <!-- Mobile Menu Toggle -->
-        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-right">
+            <button class="order-btn" onclick="openQuickOrderMenu()">Order</button>
+            
+            <!-- Hamburger Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
         
+        <!-- Hidden nav links that slide down when hamburger is clicked -->
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
             <li><a href="#menu" onclick="closeMobileMenu()">Menu</a></li>
             <li><a href="#about" onclick="closeMobileMenu()">About</a></li>
             <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
         </ul>
-        
-        <button class="order-btn" onclick="openQuickOrderMenu()"><span>Order</span></button>
     </nav>
 
     <!-- Quick Order Menu Modal -->
