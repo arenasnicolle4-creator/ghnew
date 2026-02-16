@@ -83,6 +83,47 @@
             z-index: 999;
         }
 
+        /* Center nav links for desktop */
+        .nav-links-center {
+            display: none; /* Hidden by default, shown on wide screens */
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links-center a {
+            color: var(--deep-purple);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links-center a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--dark-red);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .nav-links-center a:hover {
+            color: var(--dark-red);
+            transform: translateY(-2px);
+        }
+
+        .nav-links-center a:hover::after {
+            width: 100%;
+        }
+
         .nav-links.active {
             max-height: 300px;
         }
@@ -1442,6 +1483,28 @@
             color: rgba(245, 241, 232, 0.6);
         }
 
+        /* Wide screens - show center nav, hide hamburger */
+        @media (min-width: 1024px) {
+            .nav-links-center {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+            }
+        }
+
+        /* Narrow screens - hide center nav, show hamburger */
+        @media (max-width: 1023px) {
+            .nav-links-center {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             /* Mobile logo sizing */
@@ -1586,10 +1649,6 @@
             .confirm-butter-btn {
                 font-size: 0.9rem;
                 padding: 0.8rem;
-            }
-
-            .nav-links {
-                display: none;
             }
 
             .menu-grid {
@@ -2863,18 +2922,25 @@
     <nav>
         <div class="logo"><img src="gh-logo.png" alt="Great Harvest Bread Co." class="logo-img"></div>
         
+        <!-- Center nav links - visible on wide screens only -->
+        <ul class="nav-links-center">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
         <div class="nav-right">
-            <button class="order-btn" onclick="openQuickOrderMenu()">Order</button>
-            
-            <!-- Hamburger Menu Toggle -->
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+            
+            <button class="order-btn" onclick="openQuickOrderMenu()">Order</button>
         </div>
         
-        <!-- Hidden nav links that slide down when hamburger is clicked -->
+        <!-- Dropdown nav links - shown when hamburger is clicked -->
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
             <li><a href="#menu" onclick="closeMobileMenu()">Menu</a></li>
